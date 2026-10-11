@@ -4,6 +4,7 @@ import { CameraIcon, KeyboardIcon, LockIcon, ShieldLogo } from '../components/ic
 import { SpeakButton } from '../components/SpeakButton'
 import { compressImage, MAX_IMAGE_BYTES } from '../compress'
 import { useI18n } from '../i18n'
+import { isLowData, LOW_DATA_IMAGE_BYTES } from '../lowData'
 
 const DEMO_TAPS = 5
 const DEMO_TAP_WINDOW_MS = 3000
@@ -12,11 +13,12 @@ interface HomeProps {
   onSubmit: (input: CheckInput) => void
   onType: () => void
   onPrivacy: () => void
+  onMore: () => void
   /** Present only in demo builds: five quick taps on the logo open the demo menu. */
   onDemoMenu?: () => void
 }
 
-export function Home({ onSubmit, onType, onPrivacy, onDemoMenu }: HomeProps) {
+export function Home({ onSubmit, onType, onPrivacy, onMore, onDemoMenu }: HomeProps) {
   const { t, toggleLang } = useI18n()
   const fileRef = useRef<HTMLInputElement>(null)
   const tapsRef = useRef<number[]>([])
@@ -40,7 +42,7 @@ export function Home({ onSubmit, onType, onPrivacy, onDemoMenu }: HomeProps) {
     setPhotoFailed(false)
     setPhotoBusy(true)
     try {
-      onSubmit({ image: await compressImage(file) })
+      onSubmit({ image: await compressImage(file, isLowData() ? LOW_DATA_IMAGE_BYTES : MAX_IMAGE_BYTES) })
     } catch {
       // A format the browser cannot decode: send it untouched if it is already small enough.
       if (file.size <= MAX_IMAGE_BYTES) onSubmit({ image: file })
@@ -97,6 +99,15 @@ export function Home({ onSubmit, onType, onPrivacy, onDemoMenu }: HomeProps) {
           {t.photoError}
         </p>
       )}
+
+      <button
+        type="button"
+        onClick={onMore}
+        className="min-h-16 rounded-2xl border-2 border-line bg-white px-4 py-2 text-center active:bg-paper"
+      >
+        <span className="block text-xl leading-tight font-bold text-stamp">{t.home.more}</span>
+        <span className="block text-sm leading-tight text-muted">{t.home.moreHelp}</span>
+      </button>
 
       <button
         type="button"

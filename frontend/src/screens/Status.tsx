@@ -35,6 +35,7 @@ export function CheckFailed({ kind, onRetry, onBack }: CheckFailedProps) {
       <div role="alert" className="rounded-[2rem] border-4 border-ink bg-white p-5">
         <h1 className="text-[1.75rem] leading-[1.3] font-bold">{title}</h1>
         <p className="mt-2 text-xl leading-snug">{help}</p>
+        {kind === 'offline' && <p className="mt-2 text-lg leading-snug text-muted">{t.errors.autoRetry}</p>}
       </div>
       <button
         type="button"

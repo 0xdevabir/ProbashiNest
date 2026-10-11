@@ -54,3 +54,13 @@ def log_lines():
     _lines.raw = stream.getvalue
     yield _lines
     root.removeHandler(handler)
+
+
+@pytest.fixture(autouse=True)
+def _fresh_stats():
+    """The counters are process-wide, so every test starts them from zero."""
+    from backend.stats import STATS
+
+    STATS.reset()
+    yield
+    STATS.reset()

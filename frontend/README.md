@@ -73,7 +73,11 @@ The image serves `dist/` with nginx: hashed assets are cached for a year, the se
 | `src/demo.ts`, `src/fixtures/` | Demo mode |
 | `src/components/SpeakButton.tsx` | Hold-to-speak recorder (MediaRecorder, 2 minute limit) |
 | `src/components/VerdictCard.tsx`, `Signal.tsx` | The traffic-light verdict |
-| `src/screens/` | Home, type, loading and error, result, privacy |
+| `src/screens/` | Home, type, consent, loading and error, result, privacy, and the tools: guide, wages, SOS, helper, totals |
+| `src/components/FollowUp.tsx`, `src/followUp.ts` | Follow-up questions and "add another paper" |
+| `src/components/ReportScam.tsx` | Consented scam report |
+| `src/storage.ts` | The only place that touches `localStorage` (prefix `probashi.`) |
+| `src/lowData.ts`, `src/useGuide.ts`, `src/helper.ts`, `src/wages.ts`, `src/share.ts` | Low-data mode, cached country guide, helper tally, wage diary, share text |
 
 Behaviour worth knowing:
 
@@ -81,5 +85,35 @@ Behaviour worth knowing:
 - **Speaking:** hold the button and let go to send. A short tap also works: it starts recording, and a second tap sends. Recordings under one second are discarded.
 - **Photo:** the file input has no `capture` attribute, so phones offer both the camera and the gallery (offers often arrive as WhatsApp images). Desktop gets a file picker.
 - **Errors** are split into offline, timeout (90 s), server, bad request and unreadable answer, each with its own Bangla message and a retry button that resends the same input.
-- **Nothing is stored:** recordings and photos live in memory only until the request finishes. Only the language choice is kept in `localStorage`.
+- **Documents are never stored:** recordings and photos live in memory only. `localStorage` holds the language, the consent answer, settings, the wage diary, the trusted contact, checklist ticks, the helper tally and the last country guide. "Delete everything" on the privacy screen removes all of it.
 - **Size:** the first load is about 75 KB of JS and CSS gzipped plus two font weights; result, typing, privacy and demo screens load on demand.
+
+## Features after the first verdict
+
+| Feature | Where | How it works |
+| --- | --- | --- |
+| Consent | first check | Nothing is sent until the user agrees once. Demo answers never leave the phone, so they skip it. |
+| Reading quality | result | One line from `guidance.confidence` (or `offer.confidence`): clear from 0.8, partly from 0.5, poor below. |
+| "Why?" per reason | result | The rule behind the reason, its source, the date it was last checked, and a warning when the source is not an official one. |
+| Follow-up questions | result | Up to three missing facts. Typed or spoken answers are sent with the first input and the check runs again. |
+| Another paper | result | Adds a visa or contract photo (3 documents at most). The server compares the papers. |
+| Questions for the agent | result | Listed from the reasons. |
+| Complaint draft | result, red only | Bangla text with blanks, and a copy button. The app does not file anything. |
+| Send to family | result | The phone's share sheet (Web Share), or the clipboard where there is none. |
+| Print or save | result | `window.print()` with print styles: verdict, reasons, sources, the facts read and the time of the check. This is the evidence pack. |
+| Scam report | result, red or amber | Sent only after the box is ticked: level, reason codes, country, agency name and licence. Never the document, voice or the user's name. |
+| Country guide | result and "More help" | Rights, pre-departure checklist with ticks, payment advice, helplines. The last copy per country is kept for offline use. |
+| Wage tracker | "More help" | Promised and received pay per month, with the total shortfall. Stays on the phone. |
+| Emergency help | "More help" | Call a trusted contact, send the location by SMS or another app, official numbers for the chosen country. |
+| Helper mode | "More help" | For people who check offers for others: counts red, amber and green on the phone, nothing else. |
+| Totals | "More help" | The server's `/api/stats`: checks, verdicts, destinations, most common reason codes. |
+| Low-data mode | automatic, or the switch in "More help" | On when the phone reports data saver or 2G. Photos are compressed to 600 KB and the server sends no audio; the phone's own Bangla voice reads the answer if it has one. |
+| Offline retry | error screen | A check that failed without a connection is sent again when the phone is back online. It waits in memory only, so it is lost if the app is closed. |
+| Too many checks | error screen | HTTP 429 gets its own "wait a minute" message. |
+
+Limits to know:
+
+- The guide, the totals and scam reports need the backend, so they show an error in demo mode with no server.
+- The offline queue holds one check and does not survive closing the app. Persisting it would mean writing the user's document to the phone.
+- Printing, the share sheet, the SMS link and location have no automated tests and were not tried on real phones.
+- The red and amber fixtures carry sample `guidance`, labelled as sample text. The green one has none.

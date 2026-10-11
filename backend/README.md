@@ -99,3 +99,52 @@ In tests, pass your own functions: `create_app(settings, modules)` or `app.depen
 - **Agent 4:** `transcribe_bn` gets the bare mime type (`audio/webm`, codec parameters removed). iPhone Safari may record `audio/mp4`, which is not accepted yet; say if you can handle it.
 - **Agent 5:** read errors from `detail.message_bn`. With both `text` and `audio`, both are used.
 - **Agent 2:** the backend does not second-guess your verdict. The "unknown is never green" rule is enforced only in `evaluate`.
+
+## Added features
+
+### `POST /api/check` additions
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `more_images` | file, repeatable | Other papers for the same job (visa, contract). At most 3 documents in total, each JPG, PNG or PDF. |
+| `?voice=` | query, bool | default `true`. `false` skips speech synthesis, for slow connections. |
+
+The response is `CheckResult` (`backend/models.py`): `CheckResponse` plus an optional `guidance` object. `probashi/schemas.py` is unchanged; clients that only know `CheckResponse` can ignore the extra field.
+
+- **Several documents:** each is extracted on its own, then merged (`probashi/knowledge/consistency.py`). If two papers disagree on a fact, a `DOCUMENT_MISMATCH` reason is added and a green verdict becomes amber. Red stays red.
+- **Guidance** (`probashi/knowledge/guidance.py`): follow-up questions for missing facts, questions to ask the agent, the rule behind each reason with its source and last-checked date, a complaint draft for red verdicts, and the extractor's confidence. It is optional: if it fails, the verdict is still returned with `guidance: null`. It can never change the level.
+
+### Other endpoints
+
+| Endpoint | What it does |
+| --- | --- |
+| `GET /api/guide/{country}` | Rights, pre-departure checklist, payment advice and helplines for a two-letter country code. |
+| `GET /api/stats` | Counts since the process started: checks, by level, by channel, by destination, top reason codes, reports. Counts only. In memory, per worker, reset on restart. |
+| `POST /api/report` | JSON scam report the user agreed to send (`ReportIn`). Stored as one JSON line in `REPORTS_PATH`. |
+| `POST /api/bots/telegram` | Telegram webhook. Text, photo, document or voice message → verdict as text plus an mp3. Private chats only. |
+| `GET`, `POST /api/bots/whatsapp` | WhatsApp Cloud API webhook: verification handshake, then text, image, document or audio → verdict. |
+
+New error codes: `RATE_LIMITED` (429, with `Retry-After`), `TOO_MANY_IMAGES` (422), `CONSENT_REQUIRED` (422), `REPORTING_OFF` (503), `GUIDE_UNAVAILABLE` (503).
+
+### Abuse protection
+
+`/api/check` and `/api/report` allow `RATE_LIMIT_PER_MINUTE` requests per client address (default 20, `0` = off). The limiter is in memory and per process, so with several workers or instances the real limit is higher; put a shared limit at the load balancer for production. `X-Forwarded-For` is believed only when `TRUST_PROXY=true`, and then only its last entry. Bots have the same limit per chat.
+
+### Reports
+
+A report holds: the day, the level, reason codes, destination country, agency name and licence number. It holds no document text, no transcript, no IP address and no time of day. Digit runs in the agency fields are masked like in the logs. A report without `consent: true` is refused, and so is any unknown field. Reporting is off (503) until `REPORTS_PATH` is set. The file is the inbox for a human reviewer; there is no review screen yet.
+
+### Chat channels
+
+A channel answers 404 until all of its variables are set.
+
+- **Telegram:** `TELEGRAM_BOT_TOKEN`, `TELEGRAM_WEBHOOK_SECRET`. Register with `setWebhook`, passing the same secret as `secret_token`; requests without that header are refused.
+- **WhatsApp:** `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_ID`, `WHATSAPP_VERIFY_TOKEN`, `WHATSAPP_APP_SECRET`. Every POST must carry a valid `X-Hub-Signature-256`. Media is downloaded only from Meta hosts.
+
+Files from chats are fetched into memory, checked and dropped. Tokens never appear in logs. The webhook answers 200 at once and does the work in the background, so the services do not retry.
+
+**Not tested against the live services.** The tests replace all outgoing HTTP with a fake. Before a demo, send one text, one photo and one voice note to each bot.
+
+### New settings
+
+`RATE_LIMIT_PER_MINUTE`, `TRUST_PROXY`, `REPORTS_PATH`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_WEBHOOK_SECRET`, `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_ID`, `WHATSAPP_VERIFY_TOKEN`, `WHATSAPP_APP_SECRET`, `WHATSAPP_GRAPH_VERSION`. See `.env.example`.

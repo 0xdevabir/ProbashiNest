@@ -1,4 +1,4 @@
-import type { CheckResponse, Level } from './types'
+import type { CheckResult, Level } from './types'
 
 /** Where a check is answered from: the real API, or a bundled synthetic fixture. */
 export type DemoChoice = 'live' | Level
@@ -16,11 +16,11 @@ const fixtures: Record<Level, () => Promise<{ default: unknown }>> = {
 // Long enough for the audience to read the loading state during a pitch.
 const DEMO_DELAY_MS = 1400
 
-export async function loadFixture(level: Level, signal?: AbortSignal): Promise<CheckResponse> {
+export async function loadFixture(level: Level, signal?: AbortSignal): Promise<CheckResult> {
   const [mod] = await Promise.all([
     fixtures[level](),
     new Promise((resolve) => setTimeout(resolve, DEMO_DELAY_MS)),
   ])
   signal?.throwIfAborted()
-  return mod.default as CheckResponse
+  return mod.default as CheckResult
 }

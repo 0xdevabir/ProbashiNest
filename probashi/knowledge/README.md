@@ -198,3 +198,11 @@ Full URLs are in the data files. `data/README.md` defines "verified" and lists t
 6. **Agent 1:** add `PyYAML` to `pyproject.toml`, and the three environment variables to `.env.example`.
 7. **Voice length.** An offer with many problems yields many reasons. They are ordered most
    serious first, so the voice answer can read only the first two or three.
+
+## Added: clause scanner, guidance, document consistency
+
+- **Contract clause scanner** (`rules.check_contract_clauses`): looks in the document text for three patterns listed in `data/engine_config.yaml`: the employer or agent keeping the passport (`PASSPORT_KEPT`), fees taken out of the salary (`FEE_DEDUCTED_FROM_SALARY`), and a job described too vaguely (`JOB_VAGUE`). Each is a medium flag: it can make a verdict amber, never red on its own, because a keyword match is not proof. `JOB_VAGUE` has no source and says so.
+- **Guidance** (`guidance.py`): `guidance(offer, verdict)` returns up to three follow-up questions for missing facts, questions to put to the agent, an explainer per reason (the country rule, the fraud pattern or the licence register, each with source, `verified` and `last_checked`), a complaint draft with blanks for red verdicts, and the extractor's confidence. `guide(country)` returns the rights records for a country, the pre-departure checklist, payment advice and helplines. Both are deterministic, use no LLM, and cannot change a verdict level.
+- **Document consistency** (`consistency.py`): `merge_offers(offers)` fills gaps in the first paper from the others and lists the fields on which they disagree. `add_mismatch(verdict, fields)` adds a `DOCUMENT_MISMATCH` reason and lowers green to amber.
+
+Not built, because there is no sourced data for them: an employer blacklist check, typical salary ranges for every country, links to each country's visa-check portal (URLs not verified), remittance and loan advice, and a directory of nearby help offices.

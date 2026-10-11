@@ -58,5 +58,29 @@
     "disclaimer_bn": "এটি একটি প্রাথমিক পরামর্শ, আইনি পরামর্শ নয়। চূড়ান্ত সিদ্ধান্তের আগে সরকারি অফিসে যাচাই করুন।"
   },
   "transcript_bn": "সৌদি আরবে ক্লিনারের চাকরি। বেতন মাসে ১২০০ রিয়াল। এজেন্ট ৬ লাখ টাকা নগদ চাইছে। রসিদ দেবে না। লাইসেন্স দেখায়নি। ভিজিট ভিসায় নিয়ে যাবে বলছে।",
-  "audio_base64": null
+  "audio_base64": null,
+  "guidance": {
+    "follow_up": [
+      { "key": "agency_license_no", "text_bn": "এজেন্সির লাইসেন্স নম্বর কত? এটাকে আরএল নম্বর বলে।", "text_en": "What is the agency's licence (RL) number?" },
+      { "key": "agency_name", "text_bn": "এজেন্সির নাম কী?", "text_en": "What is the agency's name?" },
+      { "key": "employer_name", "text_bn": "কোন কোম্পানিতে কাজ করবেন?", "text_en": "Which company will you work for?" }
+    ],
+    "ask_agent": [
+      { "key": "AGENCY_LICENSE_MISSING", "text_bn": "আপনাদের এজেন্সির লাইসেন্স নম্বর কত?", "text_en": "What is your agency's licence number?" },
+      { "key": "CASH_WITHOUT_RECEIPT", "text_bn": "টাকা দিলে কি রসিদ দেবেন?", "text_en": "Will you give a receipt for the money?" },
+      { "key": "NO_WRITTEN_CONTRACT", "text_bn": "লিখিত চুক্তি কবে দেবেন?", "text_en": "When will you give the written contract?" }
+    ],
+    "explainers": [
+      {
+        "code": "AGENCY_LICENSE_MISSING",
+        "text_bn": "[নমুনা] নাম বা লাইসেন্স নম্বর না থাকলে এজেন্সিটিকে সরকারি তালিকায় মিলিয়ে দেখা যায় না।",
+        "text_en": "[Sample] Without a name or licence number the agency cannot be matched against the government list.",
+        "source": { "title": "Overseas Employment Platform: recruiting agency list", "url": "https://www.oep.gov.bd/agencies" },
+        "verified": false,
+        "last_checked": null
+      }
+    ],
+    "complaint_draft_bn": "অভিযোগ (নমুনা খসড়া)\n\nআমার নাম: __________\nমোবাইল: __________\n\nএকজন এজেন্ট আমাকে সৌদি আরবে ক্লিনারের চাকরির কথা বলেছেন। তিনি ৬ লাখ টাকা নগদ চেয়েছেন। রসিদ দিতে চাননি। লাইসেন্স নম্বর দেখাননি।\n\nএজেন্টের নাম: __________\nএজেন্টের ঠিকানা বা ফোন: __________\n\nআমি এই বিষয়ে সাহায্য চাই।\n\nতারিখ: __________\nস্বাক্ষর: __________",
+    "confidence": 0.82
+  }
 }

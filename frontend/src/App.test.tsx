@@ -6,6 +6,8 @@ import red from './fixtures/red.json'
 import { I18nProvider } from './i18n'
 
 function renderApp() {
+  // The user agreed on an earlier visit; the consent screen has its own tests.
+  localStorage.setItem('probashi.consent', 'true')
   return render(
     <I18nProvider initialLang="bn">
       <App />

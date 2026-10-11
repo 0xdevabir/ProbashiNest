@@ -35,3 +35,6 @@ recordings/
 
 # graft's local graph cache — regenerable, not committed (run `graft build`).
 /graft/
+
+# Scam reports written by the backend (REPORTS_PATH)
+reports*.jsonl

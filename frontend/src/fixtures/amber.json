@@ -52,5 +52,18 @@
     "disclaimer_bn": "এটি একটি প্রাথমিক পরামর্শ, আইনি পরামর্শ নয়। চূড়ান্ত সিদ্ধান্তের আগে সরকারি অফিসে যাচাই করুন।"
   },
   "transcript_bn": null,
-  "audio_base64": null
+  "audio_base64": null,
+  "guidance": {
+    "follow_up": [
+      { "key": "fees_charged_bdt", "text_bn": "সব মিলিয়ে কত টাকা চাইছে?", "text_en": "How much money are they asking for in total?" },
+      { "key": "visa_type", "text_bn": "কোন ধরনের ভিসা দিচ্ছে?", "text_en": "What type of visa are they giving you?" }
+    ],
+    "ask_agent": [
+      { "key": "FEES_MISSING", "text_bn": "মোট খরচ কত? লিখে দিন।", "text_en": "What is the total cost? Please write it down." },
+      { "key": "DURATION_MISSING", "text_bn": "চুক্তি কত মাসের?", "text_en": "How many months is the contract?" }
+    ],
+    "explainers": [],
+    "complaint_draft_bn": null,
+    "confidence": 0.74
+  }
 }

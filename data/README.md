@@ -112,3 +112,8 @@ One JSON file per case:
   as `verified: false`.
 - **UAE hotline 80084** is taken from the ILO factsheet, not re-read on mohre.gov.ae. It is in
   the rules text only, not in `helplines.yaml`.
+
+## Added files and keys
+
+- `checklist.yaml`: pre-departure steps (BMET registration, fingerprint, orientation, clearance card). All four are `verified: false`: they come from one travel-site article, not from bmet.gov.bd. Confirm them there and set `verified: true`.
+- `engine_config.yaml`: `passport_kept_keywords`, `salary_deduction_keywords`, `vague_job_keywords` (English and Bangla) for the contract clause scanner. A match gives an amber-level flag only.

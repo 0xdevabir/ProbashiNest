@@ -29,7 +29,7 @@ class Stats:
         with self._lock:
             self._levels[level] += 1
             self._channels[channel] += 1
-            self._codes.update(set(codes))
+            self._codes.update(list(dict.fromkeys(codes)))  # each code once per check, in a stable order
             if len(country) == 2 and country.isascii() and country.isalpha():
                 self._countries[country] += 1
 

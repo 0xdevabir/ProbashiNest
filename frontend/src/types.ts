@@ -56,3 +56,72 @@ export interface CheckResponse {
   transcript_bn: string | null
   audio_base64: string | null
 }
+
+// Everything below mirrors probashi/knowledge/guidance.py and backend/models.py.
+
+export interface Prompt {
+  /** Missing field name (follow-up) or reason code (question for the agent). */
+  key: string
+  text_bn: string
+  text_en: string
+}
+
+export interface Explainer {
+  code: string
+  text_bn: string
+  text_en: string
+  source: Source | null
+  verified: boolean
+  /** ISO date the source was last checked. */
+  last_checked: string | null
+}
+
+export interface Guidance {
+  follow_up: Prompt[]
+  ask_agent: Prompt[]
+  explainers: Explainer[]
+  complaint_draft_bn: string | null
+  confidence: number
+}
+
+/** `CheckResponse` plus optional guidance. Older servers and fixtures send none. */
+export interface CheckResult extends CheckResponse {
+  guidance?: Guidance | null
+}
+
+export interface GuideItem {
+  id: string
+  text_bn: string
+  text_en: string
+  source: Source | null
+  verified: boolean
+  last_checked: string | null
+}
+
+export interface Guide {
+  country: string
+  country_name_bn: string | null
+  rights: GuideItem[]
+  checklist: GuideItem[]
+  payment_tips_bn: string[]
+  helplines: Helpline[]
+}
+
+export interface Stats {
+  since: string
+  checks: number
+  by_level: Record<Level, number>
+  by_channel: Record<string, number>
+  by_country: Record<string, number>
+  top_reasons: { code: string; count: number }[]
+  reports: number
+}
+
+export interface ScamReport {
+  consent: boolean
+  level: Level
+  reason_codes: string[]
+  destination_country?: string
+  agency_name?: string
+  agency_license_no?: string
+}

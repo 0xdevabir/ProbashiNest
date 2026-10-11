@@ -17,7 +17,13 @@ function clock(seconds: number, num: (n: number) => string): string {
   return `${num(Math.floor(seconds / 60))}:${pad(seconds % 60)}`
 }
 
-export function SpeakButton({ onRecorded }: { onRecorded: (audio: Blob) => void }) {
+interface SpeakButtonProps {
+  onRecorded: (audio: Blob) => void
+  /** Replaces the line under the label while idle. */
+  help?: string
+}
+
+export function SpeakButton({ onRecorded, help: idleHelp }: SpeakButtonProps) {
   const { t, num } = useI18n()
   const [phase, setPhaseState] = useState<Phase>('idle')
   const [seconds, setSeconds] = useState(0)
@@ -122,7 +128,7 @@ export function SpeakButton({ onRecorded }: { onRecorded: (audio: Blob) => void 
   const label = recording ? t.home.listening : phase === 'starting' ? t.home.micStarting : t.home.speak
   const help = recording
     ? `${clock(seconds, num)} / ${clock(MAX_RECORD_SECONDS, num)}`
-    : t.home.speakHelp
+    : (idleHelp ?? t.home.speakHelp)
 
   return (
     <div>
