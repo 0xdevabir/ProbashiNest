@@ -42,18 +42,18 @@ export default function Review({ onBack }: { onBack: () => void }) {
               autoComplete="off"
               value={token}
               onChange={(event) => setToken(event.target.value)}
-              className="min-h-14 rounded-xl border-2 border-line bg-white px-3 text-lg font-normal"
+              className="min-h-14 rounded-2xl border border-line bg-white px-3 text-lg font-normal"
             />
           </label>
           <button
             type="submit"
             disabled={!token.trim() || state === 'loading'}
-            className="min-h-14 rounded-2xl bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep disabled:bg-line disabled:text-muted"
+            className="min-h-14 rounded-full bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep disabled:bg-line disabled:text-muted"
           >
             {t.review.open}
           </button>
           {state === 'refused' && (
-            <p role="alert" className="rounded-2xl border-2 border-stop bg-stop-tint p-3 text-lg font-semibold">
+            <p role="alert" className="rounded-3xl border border-stop/40 bg-stop-tint p-3 text-lg font-semibold">
               {t.review.refused}
             </p>
           )}
@@ -62,7 +62,7 @@ export default function Review({ onBack }: { onBack: () => void }) {
 
       {queue && (
         <>
-          <p className="rounded-2xl bg-white p-4 text-lg">
+          <p className="rounded-3xl bg-white shadow-card p-4 text-lg">
             {t.review.total}: <strong className="tabular-nums">{num(queue.total)}</strong>
           </p>
           {queue.total === 0 && <p className="text-lg text-muted">{t.review.none}</p>}
@@ -74,7 +74,7 @@ export default function Review({ onBack }: { onBack: () => void }) {
                 {queue.agencies.map((agency) => (
                   <li
                     key={`${agency.agency_license_no}|${agency.agency_name}`}
-                    className="flex justify-between gap-3 rounded-2xl bg-white p-3"
+                    className="flex justify-between gap-3 rounded-3xl bg-white shadow-card p-3"
                   >
                     <span>
                       <span className="block text-lg font-semibold">{agency.agency_name ?? t.review.noName}</span>
@@ -96,7 +96,7 @@ export default function Review({ onBack }: { onBack: () => void }) {
               <h2 className={heading}>{t.review.recent}</h2>
               <ul className="flex flex-col gap-2">
                 {queue.reports.map((report, i) => (
-                  <li key={i} className="rounded-2xl bg-white p-3">
+                  <li key={i} className="rounded-3xl bg-white shadow-card p-3">
                     <div className="flex justify-between gap-3 font-semibold">
                       <span>{t.verdict[report.level]?.title ?? report.level}</span>
                       <span className="tabular-nums text-muted">{report.date}</span>

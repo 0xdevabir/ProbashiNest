@@ -119,3 +119,11 @@ Limits to know:
 - The offline queue holds one check and does not survive closing the app. Persisting it would mean writing the user's document to the phone.
 - Printing, the share sheet, the SMS link and location have no automated tests and were not tried on real phones.
 - The red and amber fixtures carry sample `guidance`, labelled as sample text. The green one has none.
+
+## Look and feel
+
+The palette follows webnest.app and devabir.me: warm cream paper (`paper`), near-black `ink`, dark slate for actions (`stamp`) and a sage accent (`sage`). All of it is defined once in the `@theme` block of `src/index.css`. The red, amber and green signal colours are unchanged, and nothing else on a screen uses them.
+
+The shapes follow iOS: white cards that float on a soft shadow (`shadow-card`) with no outline, pill-shaped actions, a sticky top bar the page shows through, one grouped list for the tools, a sliding switch (`.switch`) for the low-data setting, and buttons that give slightly when pressed. Motion is switched off for people who ask for reduced motion.
+
+The font is still Hind Siliguri. The reference sites use Geist, which has no Bangla letters.

@@ -142,11 +142,11 @@ export function SpeakButton({ onRecorded, help: idleHelp }: SpeakButtonProps) {
         onClick={(event) => event.detail === 0 && press()}
         onContextMenu={(event) => event.preventDefault()}
         className={`flex min-h-44 w-full touch-none flex-col items-center justify-center gap-2 rounded-[2rem] px-4 py-6 text-white select-none ${
-          recording ? 'bg-stop' : 'bg-stamp active:bg-stamp-deep'
+          recording ? 'bg-stop' : 'bg-stamp shadow-card active:bg-stamp-deep'
         }`}
       >
         <span
-          className={`grid size-20 place-items-center rounded-full bg-white/15 ${recording ? 'animate-ring' : ''}`}
+          className={`grid size-20 place-items-center rounded-full ${recording ? 'bg-white/15' : 'bg-sage/25 text-sage'} ${recording ? 'animate-ring' : ''}`}
         >
           <MicIcon className="size-11" />
         </span>
@@ -157,7 +157,7 @@ export function SpeakButton({ onRecorded, help: idleHelp }: SpeakButtonProps) {
       </button>
       {recording && <p className="mt-2 text-center text-base font-semibold">{t.home.listeningHelp}</p>}
       {problem && (
-        <p role="alert" className="mt-3 rounded-2xl border-2 border-stop bg-stop-tint p-3 text-base font-semibold">
+        <p role="alert" className="mt-3 rounded-3xl border border-stop/40 bg-stop-tint p-3 text-base font-semibold">
           {t.mic[problem]}
         </p>
       )}

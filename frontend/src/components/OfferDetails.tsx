@@ -36,14 +36,14 @@ export function OfferDetails({ offer, transcript }: OfferDetailsProps) {
   }
 
   return (
-    <details className="group rounded-2xl border-2 border-line bg-white">
+    <details className="group rounded-3xl bg-white shadow-card">
       <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-3 px-4 text-lg font-bold [&::-webkit-details-marker]:hidden">
         {t.result.read}
         <ChevronIcon className="size-6 shrink-0 transition-transform group-open:rotate-180" />
       </summary>
-      <div className="border-t-2 border-line px-4 pb-4">
+      <div className="border-t border-line px-4 pb-4">
         {offer.confidence < LOW_CONFIDENCE && (
-          <p className="mt-3 rounded-xl bg-wait-tint p-3 font-semibold text-wait-ink">{t.result.lowConfidence}</p>
+          <p className="mt-3 rounded-2xl bg-wait-tint p-3 font-semibold text-wait-ink">{t.result.lowConfidence}</p>
         )}
         {transcript && (
           <div className="border-b border-line py-3">
@@ -64,7 +64,7 @@ export function OfferDetails({ offer, transcript }: OfferDetailsProps) {
         {offer.raw_text && (
           <details className="mt-2">
             <summary className="min-h-12 cursor-pointer py-3 font-semibold text-stamp underline">{t.result.rawText}</summary>
-            <p className="rounded-xl bg-paper p-3 text-base break-words whitespace-pre-wrap">{offer.raw_text}</p>
+            <p className="rounded-2xl bg-paper p-3 text-base break-words whitespace-pre-wrap">{offer.raw_text}</p>
           </details>
         )}
       </div>

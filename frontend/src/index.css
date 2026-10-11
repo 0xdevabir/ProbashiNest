@@ -9,13 +9,19 @@
   /* Only the 400 and 600 faces are shipped, to keep the first load small on slow networks. */
   --font-weight-bold: 600;
 
-  /* Chrome is passport-stamp indigo on cool paper, so it never competes with the three signal colours. */
-  --color-paper: #f2f4f9;
-  --color-ink: #141a33;
-  --color-muted: #4a5272;
-  --color-line: #cfd5e6;
-  --color-stamp: #27348b;
-  --color-stamp-deep: #1a2466;
+  /* Warm cream paper, near-black ink, dark slate for actions and a sage accent.
+     The chrome stays quiet so it never competes with the three signal colours. */
+  --color-paper: #f5f0e1;
+  --color-ink: #1b1b1b;
+  --color-muted: #5a615d;
+  --color-line: #e2dccb;
+  --color-stamp: #2f3737;
+  --color-stamp-deep: #1a2222;
+  --color-sage: #a8bca1;
+  --color-sage-tint: #e6ede2;
+
+  /* Cards float on the paper with a soft shadow, not an outline. */
+  --shadow-card: 0 1px 2px rgb(27 27 27 / 0.04), 0 10px 28px -14px rgb(27 27 27 / 0.18);
 
   --color-stop: #b42318;
   --color-stop-tint: #fdecea;
@@ -55,6 +61,46 @@
   summary,
   label {
     -webkit-tap-highlight-color: transparent;
+  }
+  /* Buttons give under the finger, as on a phone's own controls. */
+  button {
+    transition: transform 0.15s ease, background-color 0.15s ease, opacity 0.15s ease;
+  }
+  button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+}
+
+@layer components {
+  /* A checkbox drawn as a sliding switch, for settings that are on or off. */
+  .switch {
+    appearance: none;
+    position: relative;
+    flex-shrink: 0;
+    width: 3.25rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background-color: var(--color-line);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  .switch::after {
+    content: '';
+    position: absolute;
+    top: 0.125rem;
+    left: 0.125rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 9999px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgb(27 27 27 / 0.25);
+    transition: transform 0.2s ease;
+  }
+  .switch:checked {
+    background-color: var(--color-go);
+  }
+  .switch:checked::after {
+    transform: translateX(1.25rem);
   }
 }
 

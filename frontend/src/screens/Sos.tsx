@@ -29,7 +29,7 @@ export function locate(): Promise<string | null> {
 }
 
 const field = 'min-h-14 w-full rounded-xl border-2 border-line bg-white px-3 text-xl'
-const action = 'flex min-h-16 w-full items-center justify-center gap-3 rounded-2xl px-5 text-xl font-bold'
+const action = 'flex min-h-16 w-full items-center justify-center gap-3 rounded-full px-5 text-xl font-bold'
 
 /** One place to reach a trusted person and the official numbers. The contact stays on the phone. */
 export default function Sos({ onBack }: { onBack: () => void }) {
@@ -84,7 +84,7 @@ export default function Sos({ onBack }: { onBack: () => void }) {
           <button type="button" onClick={sendSms} className={`${action} bg-stamp text-white active:bg-stamp-deep`}>
             {t.sos.sendLocation}
           </button>
-          <button type="button" onClick={share} className={`${action} border-2 border-stamp bg-white text-stamp`}>
+          <button type="button" onClick={share} className={`${action} bg-sage-tint text-stamp`}>
             {t.sos.shareLocation}
           </button>
           <button type="button" onClick={() => setEditing(true)} className="min-h-12 font-semibold text-stamp underline">
@@ -92,7 +92,7 @@ export default function Sos({ onBack }: { onBack: () => void }) {
           </button>
         </section>
       ) : (
-        <form onSubmit={saveContact} className="flex flex-col gap-3 rounded-2xl border-2 border-stamp bg-white p-4">
+        <form onSubmit={saveContact} className="flex flex-col gap-3 rounded-3xl border border-stamp/20 bg-white shadow-card p-4">
           <div>
             <h2 className="text-xl font-bold">{t.sos.contact}</h2>
             <p className="text-muted">{t.sos.contactHelp}</p>
@@ -112,7 +112,7 @@ export default function Sos({ onBack }: { onBack: () => void }) {
       )}
 
       {notice && (
-        <p role="status" className="rounded-2xl bg-wait-tint p-3 font-semibold text-wait-ink">
+        <p role="status" className="rounded-3xl bg-wait-tint p-3 font-semibold text-wait-ink">
           {notice}
         </p>
       )}

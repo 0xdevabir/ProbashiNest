@@ -53,7 +53,7 @@ export function Home({ onSubmit, onType, onPrivacy, onMore, onDemoMenu }: HomePr
   }
 
   const tile =
-    'flex min-h-36 flex-col items-center justify-center gap-1 rounded-3xl border-2 border-stamp bg-white px-3 py-4 text-center text-stamp active:bg-paper disabled:opacity-60'
+    'flex min-h-36 flex-col items-center justify-center gap-1 rounded-3xl bg-white px-3 py-4 text-center text-stamp shadow-card active:bg-paper disabled:opacity-60'
 
   return (
     <div className="flex min-h-dvh flex-col gap-5 pb-6">
@@ -66,7 +66,7 @@ export function Home({ onSubmit, onType, onPrivacy, onMore, onDemoMenu }: HomePr
         <button
           type="button"
           onClick={toggleLang}
-          className="min-h-12 rounded-full border-2 border-line bg-white px-4 text-base font-semibold"
+          className="min-h-12 rounded-full bg-white/70 px-4 text-base font-semibold shadow-card backdrop-blur-xl"
         >
           {t.switchLang}
         </button>
@@ -95,7 +95,7 @@ export function Home({ onSubmit, onType, onPrivacy, onMore, onDemoMenu }: HomePr
       <input ref={fileRef} type="file" accept="image/*" hidden onChange={onPhoto} data-testid="photo-input" />
 
       {photoFailed && (
-        <p role="alert" className="rounded-2xl border-2 border-stop bg-stop-tint p-3 text-base font-semibold">
+        <p role="alert" className="rounded-3xl border border-stop/40 bg-stop-tint p-3 text-base font-semibold">
           {t.photoError}
         </p>
       )}
@@ -103,7 +103,7 @@ export function Home({ onSubmit, onType, onPrivacy, onMore, onDemoMenu }: HomePr
       <button
         type="button"
         onClick={onMore}
-        className="min-h-16 rounded-2xl border-2 border-line bg-white px-4 py-2 text-center active:bg-paper"
+        className="min-h-16 rounded-3xl bg-white shadow-card px-4 py-2 text-center active:bg-paper"
       >
         <span className="block text-xl leading-tight font-bold text-stamp">{t.home.more}</span>
         <span className="block text-sm leading-tight text-muted">{t.home.moreHelp}</span>

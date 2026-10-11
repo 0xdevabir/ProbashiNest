@@ -31,7 +31,7 @@ export default function Wages({ onBack }: { onBack: () => void }) {
         <p className="mt-1 text-lg text-muted">{t.wages.intro}</p>
       </div>
 
-      <form onSubmit={add} className="flex flex-col gap-3 rounded-2xl border-2 border-stamp bg-white p-4">
+      <form onSubmit={add} className="flex flex-col gap-3 rounded-3xl border border-stamp/20 bg-white shadow-card p-4">
         <label className="flex flex-col gap-1 text-lg font-semibold">
           {t.wages.month}
           <input type="month" required value={month} onChange={(e) => setMonth(e.target.value)} className={field} />
@@ -46,7 +46,7 @@ export default function Wages({ onBack }: { onBack: () => void }) {
             <input type="number" inputMode="decimal" min="0" required value={received} onChange={(e) => setReceived(e.target.value)} className={field} />
           </label>
         </div>
-        <button type="submit" className="min-h-14 rounded-2xl bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep">
+        <button type="submit" className="min-h-14 rounded-full bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep">
           {t.wages.add}
         </button>
       </form>
@@ -57,14 +57,14 @@ export default function Wages({ onBack }: { onBack: () => void }) {
         <>
           <div
             role="status"
-            className={`rounded-2xl p-4 text-xl font-bold ${summary.shortfall > 0 ? 'bg-stop-tint text-stop' : 'bg-go-tint text-go'}`}
+            className={`rounded-3xl p-4 text-xl font-bold ${summary.shortfall > 0 ? 'bg-stop-tint text-stop' : 'bg-go-tint text-go'}`}
           >
             {summary.shortfall > 0 ? `${t.wages.shortfall}: ${num(summary.shortfall)}` : t.wages.allPaid}
             {summary.shortfall > 0 && <p className="mt-1 text-base font-semibold text-ink">{t.wages.advice}</p>}
           </div>
           <ul className="flex flex-col gap-2">
             {entries.map((entry) => (
-              <li key={entry.month} className="flex items-center justify-between gap-3 rounded-2xl bg-white p-4">
+              <li key={entry.month} className="flex items-center justify-between gap-3 rounded-3xl bg-white shadow-card p-4">
                 <span>
                   <span className="block text-lg font-bold tabular-nums">{entry.month}</span>
                   <span className="block text-muted">

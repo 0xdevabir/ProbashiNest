@@ -33,7 +33,7 @@ export default function StatsScreen({ onBack }: { onBack: () => void }) {
       </div>
       {!stats && !failed && <p role="status" className="text-lg text-muted">{t.stats.loading}</p>}
       {failed && (
-        <p role="alert" className="rounded-2xl border-2 border-stop bg-stop-tint p-3 text-lg font-semibold">
+        <p role="alert" className="rounded-3xl border border-stop/40 bg-stop-tint p-3 text-lg font-semibold">
           {t.stats.failed}
         </p>
       )}
@@ -46,19 +46,19 @@ export default function StatsScreen({ onBack }: { onBack: () => void }) {
             <>
               <p className="mb-2 text-muted">{t.stats.qualityIntro}</p>
               <dl className="flex flex-col gap-2">
-                <div className={`rounded-2xl p-3 ${quality.fraud_green === 0 ? 'bg-go-tint' : 'border-2 border-stop bg-stop-tint'}`}>
+                <div className={`rounded-3xl p-3 ${quality.fraud_green === 0 ? 'bg-go-tint' : 'border border-stop/40 bg-stop-tint'}`}>
                   <dt className="font-semibold">{t.stats.fraudGreen}</dt>
                   <dd className="text-3xl font-bold tabular-nums">
                     {num(quality.fraud_green)} / {num(quality.fraud_total)}
                   </dd>
                 </div>
-                <div className="rounded-2xl bg-white p-3">
+                <div className="rounded-3xl bg-white shadow-card p-3">
                   <dt className="text-muted">{t.stats.fraudRed}</dt>
                   <dd className="text-2xl font-bold tabular-nums">
                     {num(quality.fraud_red)} / {num(quality.fraud_total)}
                   </dd>
                 </div>
-                <div className="rounded-2xl bg-white p-3">
+                <div className="rounded-3xl bg-white shadow-card p-3">
                   <dt className="text-muted">{t.stats.correct}</dt>
                   <dd className="text-2xl font-bold tabular-nums">
                     {num(quality.correct)} / {num(quality.total)}
@@ -76,16 +76,16 @@ export default function StatsScreen({ onBack }: { onBack: () => void }) {
       {stats && (
         <>
           <dl className="grid grid-cols-2 gap-2 text-center">
-            <div className="rounded-2xl bg-white p-3">
+            <div className="rounded-3xl bg-white shadow-card p-3">
               <dt className="text-muted">{t.stats.checks}</dt>
               <dd className="text-3xl font-bold tabular-nums">{num(stats.checks)}</dd>
             </div>
-            <div className="rounded-2xl bg-white p-3">
+            <div className="rounded-3xl bg-white shadow-card p-3">
               <dt className="text-muted">{t.stats.reports}</dt>
               <dd className="text-3xl font-bold tabular-nums">{num(stats.reports)}</dd>
             </div>
             {LEVELS.map((level) => (
-              <div key={level} className="rounded-2xl bg-white p-3 last:col-span-2">
+              <div key={level} className="rounded-3xl bg-white shadow-card p-3 last:col-span-2">
                 <dt className="leading-tight text-muted">{t.verdict[level].title}</dt>
                 <dd className="text-3xl font-bold tabular-nums">{num(stats.by_level[level] ?? 0)}</dd>
               </div>
@@ -97,7 +97,7 @@ export default function StatsScreen({ onBack }: { onBack: () => void }) {
               <h2 className={heading}>{t.stats.byCountry}</h2>
               <ul className="flex flex-col gap-2">
                 {countries.map(([code, count]) => (
-                  <li key={code} className="rounded-2xl bg-white p-3">
+                  <li key={code} className="rounded-3xl bg-white shadow-card p-3">
                     <div className="flex justify-between text-lg font-semibold">
                       <span>{t.countries[code] ?? code}</span>
                       <span className="tabular-nums">{num(count)}</span>
@@ -114,7 +114,7 @@ export default function StatsScreen({ onBack }: { onBack: () => void }) {
           {stats.top_reasons.length > 0 && (
             <section>
               <h2 className={heading}>{t.stats.topReasons}</h2>
-              <ol className="flex flex-col gap-1 rounded-2xl bg-white p-4">
+              <ol className="flex flex-col gap-1 rounded-3xl bg-white shadow-card p-4">
                 {stats.top_reasons.map(({ code, count }) => (
                   <li key={code} className="flex justify-between gap-3 border-b border-line py-2 last:border-0">
                     <code className="text-sm break-all">{code}</code>

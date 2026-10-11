@@ -28,12 +28,12 @@ export default function TypeOffer({ onSubmit, onBack }: { onSubmit: (text: strin
         value={text}
         onChange={(event) => setText(event.target.value)}
         placeholder={t.typeScreen.placeholder}
-        className="w-full rounded-2xl border-2 border-stamp bg-white p-4 text-xl placeholder:text-muted/80"
+        className="w-full rounded-3xl border border-stamp/20 bg-white shadow-card p-4 text-xl placeholder:text-muted/80"
       />
       <button
         type="submit"
         disabled={!trimmed}
-        className="min-h-16 rounded-2xl bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep disabled:bg-line disabled:text-muted"
+        className="min-h-16 rounded-full bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep disabled:bg-line disabled:text-muted"
       >
         {t.typeScreen.submit}
       </button>

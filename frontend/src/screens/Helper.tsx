@@ -27,7 +27,7 @@ export default function Helper({ onBack }: { onBack: () => void }) {
         <h1 className="text-[1.75rem] leading-[1.3] font-bold">{t.helper.title}</h1>
         <p className="mt-1 text-lg text-muted">{t.helper.intro}</p>
       </div>
-      <label className="flex cursor-pointer items-center gap-3 rounded-2xl bg-white p-4 text-xl font-bold">
+      <label className="flex cursor-pointer items-center gap-3 rounded-3xl bg-white shadow-card p-4 text-xl font-bold">
         <span className="grow">{t.helper.on}</span>
         <input type="checkbox" checked={on} onChange={(e) => toggle(e.target.checked)} className="size-7 shrink-0 accent-stamp" />
       </label>
@@ -35,7 +35,7 @@ export default function Helper({ onBack }: { onBack: () => void }) {
         <h2 className="mb-3 text-2xl font-bold">{t.helper.counts}</h2>
         <dl className="grid grid-cols-3 gap-2 text-center">
           {LEVELS.map((level) => (
-            <div key={level} className="rounded-2xl bg-white p-3">
+            <div key={level} className="rounded-3xl bg-white shadow-card p-3">
               <dt className="leading-tight text-muted">{t.verdict[level].title}</dt>
               <dd className="text-3xl font-bold tabular-nums">{num(tally[level])}</dd>
             </div>

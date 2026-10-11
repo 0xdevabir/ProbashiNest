@@ -22,24 +22,24 @@ export default function More({ onOpen, onBack }: { onOpen: (tool: Tool) => void;
     <div className="flex flex-col gap-4 pb-8">
       <ScreenHeader onBack={onBack} />
       <h1 className="text-[1.75rem] leading-[1.3] font-bold">{t.more.title}</h1>
-      <ul className="flex flex-col gap-2">
+      <ul className="divide-y divide-line overflow-hidden rounded-3xl bg-white shadow-card">
         {TOOLS.map((tool) => (
           <li key={tool}>
             <button
               type="button"
               onClick={() => onOpen(tool)}
-              className="flex min-h-18 w-full items-center justify-between gap-3 rounded-2xl border-2 border-line bg-white p-4 text-left active:bg-paper"
+              className="flex min-h-18 w-full items-center justify-between gap-3 p-4 text-left active:bg-paper"
             >
               <span>
                 <span className="block text-xl leading-tight font-bold">{t.more[tool]}</span>
                 <span className="block text-muted">{t.more[`${tool}Help` as const]}</span>
               </span>
-              <ChevronIcon className="size-6 shrink-0 -rotate-90 text-stamp" />
+              <ChevronIcon className="size-5 shrink-0 -rotate-90 text-muted" />
             </button>
           </li>
         ))}
       </ul>
-      <label className="flex cursor-pointer items-center gap-3 rounded-2xl bg-white p-4">
+      <label className="flex cursor-pointer items-center gap-3 rounded-3xl bg-white shadow-card p-4">
         <span className="grow">
           <span className="block text-xl leading-tight font-bold">{t.more.lowData}</span>
           <span className="block text-muted">{t.more.lowDataHelp}</span>
@@ -48,7 +48,8 @@ export default function More({ onOpen, onBack }: { onOpen: (tool: Tool) => void;
           type="checkbox"
           checked={lowData}
           onChange={(event) => toggleLowData(event.target.checked)}
-          className="size-7 shrink-0 accent-stamp"
+          role="switch"
+          className="switch"
         />
       </label>
     </div>

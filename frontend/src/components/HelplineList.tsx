@@ -15,7 +15,7 @@ export function HelplineList({ helplines }: { helplines: Helpline[] }) {
           <a
             href={telHref(line.phone)}
             aria-label={`${t.result.call}: ${line.name}, ${line.phone}`}
-            className="flex min-h-16 items-center gap-3 rounded-2xl border-2 border-go bg-white p-3 text-ink active:bg-go-tint"
+            className="flex min-h-16 items-center gap-3 rounded-3xl border border-go/40 bg-white p-3 text-ink active:bg-go-tint"
           >
             <span className="grid size-12 shrink-0 place-items-center rounded-full bg-go text-white">
               <PhoneIcon className="size-6" />

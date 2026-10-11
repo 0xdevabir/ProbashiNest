@@ -41,22 +41,22 @@ export default function GuideScreen({ initialCountry, onBack }: { initialCountry
 
       {status === 'loading' && <p role="status" className="text-lg text-muted">{t.guide.loading}</p>}
       {status === 'failed' && (
-        <p role="alert" className="rounded-2xl border-2 border-stop bg-stop-tint p-3 text-lg font-semibold">
+        <p role="alert" className="rounded-3xl border border-stop/40 bg-stop-tint p-3 text-lg font-semibold">
           {t.guide.failed}
         </p>
       )}
-      {status === 'saved' && <p role="status" className="rounded-2xl bg-wait-tint p-3 font-semibold text-wait-ink">{t.guide.saved}</p>}
+      {status === 'saved' && <p role="status" className="rounded-3xl bg-wait-tint p-3 font-semibold text-wait-ink">{t.guide.saved}</p>}
 
       {guide && (
         <>
           <section>
             <h2 className={heading}>{t.guide.rights}</h2>
             {guide.rights.length === 0 ? (
-              <p className="rounded-2xl bg-wait-tint p-4 text-lg font-semibold text-wait-ink">{t.guide.noRights}</p>
+              <p className="rounded-3xl bg-wait-tint p-4 text-lg font-semibold text-wait-ink">{t.guide.noRights}</p>
             ) : (
               <ul className="flex flex-col gap-2">
                 {guide.rights.map((item) => (
-                  <li key={item.id} className="rounded-2xl border-l-8 border-stamp bg-white p-4">
+                  <li key={item.id} className="rounded-3xl border-l-8 border-stamp bg-white shadow-card p-4">
                     <Item item={item} />
                   </li>
                 ))}
@@ -70,7 +70,7 @@ export default function GuideScreen({ initialCountry, onBack }: { initialCountry
               <ul className="flex flex-col gap-2">
                 {guide.checklist.map((item) => (
                   <li key={item.id}>
-                    <label className="flex cursor-pointer items-start gap-3 rounded-2xl bg-white p-4 has-checked:bg-go-tint">
+                    <label className="flex cursor-pointer items-start gap-3 rounded-3xl bg-white shadow-card p-4 has-checked:bg-go-tint">
                       <input
                         type="checkbox"
                         checked={done.includes(item.id)}
@@ -88,7 +88,7 @@ export default function GuideScreen({ initialCountry, onBack }: { initialCountry
           )}
 
           {guide.payment_tips_bn.length > 0 && (
-            <section className="rounded-2xl border-2 border-wait bg-wait-tint p-4">
+            <section className="rounded-3xl border border-wait/40 bg-wait-tint p-4">
               <h2 className="mb-2 text-2xl font-bold">{t.guide.payment}</h2>
               <ul lang="bn" className="flex list-disc flex-col gap-2 pl-6 text-lg leading-snug">
                 {guide.payment_tips_bn.map((tip) => (

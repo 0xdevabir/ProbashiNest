@@ -40,7 +40,7 @@ export function CheckFailed({ kind, onRetry, onBack }: CheckFailedProps) {
       <button
         type="button"
         onClick={onRetry}
-        className="flex min-h-16 items-center justify-center gap-3 rounded-2xl bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep"
+        className="flex min-h-16 items-center justify-center gap-3 rounded-full bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep"
       >
         <RetryIcon className="size-7" />
         {t.errors.retry}

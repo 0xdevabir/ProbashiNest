@@ -34,7 +34,7 @@ export default function DemoMenu({ choice, onChoose, onClose }: DemoMenuProps) {
               onChoose(value)
               onClose()
             }}
-            className="min-h-14 rounded-2xl border-2 border-line px-4 text-left text-xl font-semibold aria-pressed:border-stamp aria-pressed:bg-stamp aria-pressed:text-white"
+            className="min-h-14 rounded-3xl border border-line px-4 text-left text-xl font-semibold aria-pressed:border-stamp aria-pressed:bg-stamp aria-pressed:text-white"
           >
             {label}
           </button>

@@ -43,14 +43,14 @@ export function ReportScam({ result }: { result: CheckResult }) {
 
   if (state === 'sent') {
     return (
-      <p role="status" className="rounded-2xl bg-go-tint p-4 text-lg font-semibold print:hidden">
+      <p role="status" className="rounded-3xl bg-go-tint p-4 text-lg font-semibold print:hidden">
         {t.guidance.report.sent}
       </p>
     )
   }
 
   return (
-    <section className="flex flex-col gap-3 rounded-2xl border-2 border-line bg-white p-4 print:hidden">
+    <section className="flex flex-col gap-3 rounded-3xl bg-white shadow-card p-4 print:hidden">
       <div>
         <h2 className="text-xl font-bold">{t.guidance.report.title}</h2>
         <p className="text-muted">{t.guidance.report.help}</p>
@@ -68,7 +68,7 @@ export function ReportScam({ result }: { result: CheckResult }) {
         type="button"
         disabled={!agreed || state === 'sending'}
         onClick={send}
-        className="min-h-14 rounded-2xl bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep disabled:bg-line disabled:text-muted"
+        className="min-h-14 rounded-full bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep disabled:bg-line disabled:text-muted"
       >
         {t.guidance.report.send}
       </button>

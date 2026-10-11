@@ -17,7 +17,7 @@ const CLEAR = 0.8
 const PARTLY = 0.5
 
 const quietAction =
-  'min-h-14 rounded-2xl border-2 border-stamp bg-white px-4 text-lg font-bold text-stamp active:bg-paper print:hidden'
+  'min-h-14 rounded-3xl border border-stamp/20 bg-white shadow-card px-4 text-lg font-bold text-stamp active:bg-paper print:hidden'
 
 interface ResultProps {
   response: CheckResult
@@ -89,7 +89,7 @@ export default function Result({ response, isDemo, input, onAgain, onResubmit, o
             {verdict.reasons.map((reason) => {
               const explainers = guidance?.explainers.filter((e) => e.code === reason.code) ?? []
               return (
-                <li key={reason.code} className="rounded-2xl border-l-8 border-stamp bg-white p-4">
+                <li key={reason.code} className="rounded-3xl border-l-8 border-stamp bg-white shadow-card p-4">
                   <p className="text-lg leading-snug font-semibold">
                     {lang === 'bn' ? reason.message_bn : reason.message_en || reason.message_bn}
                   </p>
@@ -100,7 +100,7 @@ export default function Result({ response, isDemo, input, onAgain, onResubmit, o
                         {t.guidance.why}
                       </summary>
                       {explainers.map((e) => (
-                        <div key={e.text_bn} className="mt-1 rounded-xl bg-paper p-3">
+                        <div key={e.text_bn} className="mt-1 rounded-2xl bg-paper p-3">
                           <p className="text-base leading-snug">{lang === 'bn' ? e.text_bn : e.text_en || e.text_bn}</p>
                           <SourceNote source={e.source} verified={e.verified} lastChecked={e.last_checked} />
                         </div>
@@ -122,7 +122,7 @@ export default function Result({ response, isDemo, input, onAgain, onResubmit, o
           <ol className="flex flex-col gap-2">
             {verdict.next_steps_bn.map((step, i) => (
               <li key={step}>
-                <label className="flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl bg-white p-3 has-checked:bg-go-tint">
+                <label className="flex min-h-16 cursor-pointer items-center gap-3 rounded-3xl bg-white shadow-card p-3 has-checked:bg-go-tint">
                   <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ink text-xl font-bold text-white">
                     {num(i + 1)}
                   </span>
@@ -138,7 +138,7 @@ export default function Result({ response, isDemo, input, onAgain, onResubmit, o
       {guidance && guidance.ask_agent.length > 0 && (
         <section>
           <h2 className={heading}>{t.guidance.askAgent}</h2>
-          <ul className="flex list-disc flex-col gap-2 rounded-2xl bg-white p-4 pl-9 text-lg leading-snug">
+          <ul className="flex list-disc flex-col gap-2 rounded-3xl bg-white shadow-card p-4 pl-9 text-lg leading-snug">
             {guidance.ask_agent.map((q) => (
               <li key={q.text_bn}>{lang === 'bn' ? q.text_bn : q.text_en || q.text_bn}</li>
             ))}
@@ -157,7 +157,7 @@ export default function Result({ response, isDemo, input, onAgain, onResubmit, o
         <section>
           <h2 className={heading}>{t.guidance.complaint}</h2>
           <p className="mb-2 text-muted">{t.guidance.complaintHelp}</p>
-          <p lang="bn" className="rounded-2xl bg-white p-4 text-base break-words whitespace-pre-wrap">
+          <p lang="bn" className="rounded-3xl bg-white shadow-card p-4 text-base break-words whitespace-pre-wrap">
             {guidance.complaint_draft_bn}
           </p>
           <button type="button" onClick={copyComplaint} className={`mt-2 w-full ${quietAction}`}>
@@ -195,7 +195,7 @@ export default function Result({ response, isDemo, input, onAgain, onResubmit, o
       <button
         type="button"
         onClick={onAgain}
-        className="min-h-16 rounded-2xl border-2 border-stamp bg-white px-5 text-xl font-bold text-stamp active:bg-paper print:hidden"
+        className="min-h-16 rounded-full border border-stamp/20 bg-white px-5 text-xl font-bold text-stamp active:bg-paper print:hidden"
       >
         {t.result.again}
       </button>

@@ -49,7 +49,7 @@ export function FollowUp({ input, result, onResubmit }: FollowUpProps) {
   if (questions.length === 0 && !addPaper) return null
 
   return (
-    <section className="flex flex-col gap-3 rounded-2xl border-2 border-stamp bg-white p-4 print:hidden">
+    <section className="flex flex-col gap-3 rounded-3xl border border-stamp/20 bg-white shadow-card p-4 print:hidden">
       {questions.length > 0 && (
         <form onSubmit={submit} className="flex flex-col gap-3">
           <div>
@@ -65,14 +65,14 @@ export function FollowUp({ input, result, onResubmit }: FollowUpProps) {
                 value={answers[q.key] ?? ''}
                 onChange={(event) => setAnswers({ ...answers, [q.key]: event.target.value })}
                 placeholder={t.guidance.answer}
-                className="min-h-14 rounded-xl border-2 border-line bg-paper px-3 text-lg font-normal placeholder:text-muted/80"
+                className="min-h-14 rounded-2xl border border-line bg-paper px-3 text-lg font-normal placeholder:text-muted/80"
               />
             </label>
           ))}
           <button
             type="submit"
             disabled={!hasAnswer}
-            className="min-h-14 rounded-2xl bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep disabled:bg-line disabled:text-muted"
+            className="min-h-14 rounded-full bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep disabled:bg-line disabled:text-muted"
           >
             {t.guidance.checkAgain}
           </button>
@@ -88,7 +88,7 @@ export function FollowUp({ input, result, onResubmit }: FollowUpProps) {
           <button
             type="button"
             onClick={() => fileRef.current?.click()}
-            className="flex min-h-16 items-center gap-3 rounded-2xl border-2 border-stamp bg-white p-3 text-left text-stamp active:bg-paper"
+            className="flex min-h-16 items-center gap-3 rounded-3xl border border-stamp/20 bg-white shadow-card p-3 text-left text-stamp active:bg-paper"
           >
             <CameraIcon className="size-9 shrink-0" />
             <span>
@@ -98,7 +98,7 @@ export function FollowUp({ input, result, onResubmit }: FollowUpProps) {
           </button>
           <input ref={fileRef} type="file" accept="image/*" hidden onChange={onPhoto} data-testid="paper-input" />
           {photoFailed && (
-            <p role="alert" className="rounded-2xl border-2 border-stop bg-stop-tint p-3 text-base font-semibold">
+            <p role="alert" className="rounded-3xl border border-stop/40 bg-stop-tint p-3 text-base font-semibold">
               {t.photoError}
             </p>
           )}

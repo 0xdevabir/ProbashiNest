@@ -16,7 +16,7 @@ export default function Consent({ onAgree, onBack }: { onAgree: () => void; onBa
       <button
         type="button"
         onClick={onAgree}
-        className="mt-auto min-h-16 rounded-2xl bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep"
+        className="mt-auto min-h-16 rounded-full bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep"
       >
         {t.consent.agree}
       </button>

@@ -13,7 +13,7 @@ export function CountryPicker({ value, onChange }: CountryPickerProps) {
       <select
         value={value ?? ''}
         onChange={(event) => event.target.value && onChange(event.target.value)}
-        className="min-h-14 rounded-xl border-2 border-stamp bg-white px-3 text-xl"
+        className="min-h-14 rounded-2xl border border-stamp/20 bg-white px-3 text-xl"
       >
         <option value="" disabled>
           —

@@ -89,7 +89,7 @@ export function AudioAnswer({ audioBase64, fallbackText }: AudioAnswerProps) {
     <button
       type="button"
       onClick={playing ? stop : play}
-      className="flex min-h-16 w-full items-center justify-center gap-3 rounded-2xl bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep"
+      className="flex min-h-16 w-full items-center justify-center gap-3 rounded-full bg-stamp px-5 text-xl font-bold text-white active:bg-stamp-deep"
     >
       {playing ? <StopIcon className="size-7" /> : <SpeakerIcon className="size-7" />}
       {playing ? t.result.stop : played ? t.result.replay : t.result.listen}

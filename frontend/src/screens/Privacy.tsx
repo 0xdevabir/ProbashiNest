@@ -22,7 +22,7 @@ export default function Privacy({ onBack }: { onBack: () => void }) {
           <li key={point}>{point}</li>
         ))}
       </ul>
-      <section className="rounded-2xl border-2 border-wait bg-wait-tint p-4">
+      <section className="rounded-3xl border border-wait/40 bg-wait-tint p-4">
         <h2 className="mb-2 text-2xl font-bold">{t.privacy.adviceTitle}</h2>
         <ul className={list}>
           {t.privacy.advice.map((point) => (
@@ -40,12 +40,12 @@ export default function Privacy({ onBack }: { onBack: () => void }) {
         <button
           type="button"
           onClick={deleteAll}
-          className="min-h-16 rounded-2xl border-2 border-stop bg-white px-5 text-xl font-bold text-stop active:bg-stop-tint"
+          className="min-h-16 rounded-full border border-stop/40 bg-white px-5 text-xl font-bold text-stop active:bg-stop-tint"
         >
           {t.device.deleteAll}
         </button>
         {deleted && (
-          <p role="status" className="rounded-2xl bg-go-tint p-3 text-lg font-semibold">
+          <p role="status" className="rounded-3xl bg-go-tint p-3 text-lg font-semibold">
             {t.device.deleted}
           </p>
         )}

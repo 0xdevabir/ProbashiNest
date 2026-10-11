@@ -103,7 +103,7 @@ export const ChevronIcon = (p: IconProps) => (
 
 export const ShieldLogo = (p: IconProps) => (
   <svg viewBox="0 0 40 44" aria-hidden="true" {...p}>
-    <path d="M20 1l18 6.5V21c0 11.5-7.5 19.5-18 22C9.5 40.5 2 32.5 2 21V7.5z" fill="#27348b" />
+    <path d="M20 1l18 6.5V21c0 11.5-7.5 19.5-18 22C9.5 40.5 2 32.5 2 21V7.5z" fill="#2f3737" />
     <circle cx="20" cy="12" r="4" fill="#ff6b5e" />
     <circle cx="20" cy="22" r="4" fill="#f5a300" />
     <circle cx="20" cy="32" r="4" fill="#4fd08a" />
