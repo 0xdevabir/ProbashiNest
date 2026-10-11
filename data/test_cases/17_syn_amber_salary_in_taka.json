@@ -1,0 +1,23 @@
+{
+  "id": "syn_amber_salary_in_taka",
+  "note": "Salary given in taka for a Qatar job; cannot be compared with the riyal minimum wage. The agency is real and licensed but did NOT make this offer; the offer is invented.",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": false,
+  "expected_level": "amber",
+  "offer": {
+    "employer_name": "Synthetic Facilities Co (invented)",
+    "job_title": "Cleaner",
+    "destination_country": "QA",
+    "agency_name": "1 Plus Overseas Limited",
+    "agency_license_no": "RL-1857",
+    "fees_charged_bdt": 0,
+    "contract_duration_months": 24,
+    "visa_type": "Work visa",
+    "confidence": 0.9,
+    "monthly_salary": {
+      "amount": 45000,
+      "currency": "BDT"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "syn_amber_too_good_salary",
+  "note": "Cleaner job in Kuwait at 500 dinars a month (over six times the minimum wage): a lure, but nothing else is wrong. The agency is real and licensed but did NOT make this offer; the offer is invented.",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": true,
+  "expected_level": "amber",
+  "offer": {
+    "employer_name": "Synthetic Services Co (invented)",
+    "job_title": "Cleaner",
+    "destination_country": "KW",
+    "agency_name": "2PLUS OVERSEAS LTD",
+    "agency_license_no": "RL2889",
+    "fees_charged_bdt": 0,
+    "contract_duration_months": 24,
+    "visa_type": "Work visa",
+    "confidence": 0.9,
+    "monthly_salary": {
+      "amount": 500,
+      "currency": "KWD"
+    }
+  }
+}

@@ -1,12 +1,11 @@
 """Owner: Agent 3 (document reading and fact extraction).
 
-Placeholder created during repo setup so imports work. Replace with the
-real implementation; keep the function signature unchanged.
+Public API:
+    extract_offer(image_bytes, text) -> ExtractedOffer
+    mask_pii(text) -> str   # use before logging any document text
+See README.md in this folder.
 """
-from typing import Optional
+from .extractor import IMPORTANT_FIELDS, extract_offer
+from .privacy import mask_pii
 
-from probashi.schemas import ExtractedOffer
-
-
-def extract_offer(image_bytes: Optional[bytes], text: Optional[str]) -> ExtractedOffer:
-    raise NotImplementedError("probashi.extract is not implemented yet (Agent 3)")
+__all__ = ["extract_offer", "mask_pii", "IMPORTANT_FIELDS"]

@@ -1,0 +1,14 @@
+{
+  "id": "real_russia_rl2505",
+  "note": "Agency RL-2505, licence cancelled in the same Russia case. Only facts stated in the report are filled in; everything else is left empty.",
+  "synthetic": false,
+  "source_url": "https://en.prothomalo.com/bangladesh/pfydrq5l7w",
+  "is_fraud": true,
+  "expected_level": "red",
+  "offer": {
+    "destination_country": "RU",
+    "agency_name": "Jabal-E-Noor International Ltd",
+    "agency_license_no": "RL 2505",
+    "confidence": 0.8
+  }
+}

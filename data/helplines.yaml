@@ -1,0 +1,112 @@
+# Official helplines and Bangladesh mission labour-wing offices.
+# Every number below was read on the official page given in source.url on last_checked
+# and is copied exactly as printed there (office lines only, no personal mobiles).
+# country: BD = shown for every verdict; otherwise shown when the offer's destination matches.
+helplines:
+  - id: BD_PROBASHBONDHU_16135
+    country: BD
+    name_en: Probashbondhu Call Centre (toll free, inside Bangladesh)
+    name_bn: প্রবাসবন্ধু কল সেন্টার (ফ্রি কল)
+    phone: "16135"
+    source:
+      title: "Bureau of Manpower, Employment and Training (BMET) – home page"
+      url: https://bmet.gov.bd/
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: BD_PROBASHBONDHU_ABROAD
+    country: BD
+    name_en: Probashbondhu Call Centre (from abroad)
+    name_bn: প্রবাসবন্ধু কল সেন্টার (বিদেশ থেকে)
+    phone: "+88 09610 102 030"
+    source:
+      title: "Ministry of Expatriates' Welfare and Overseas Employment – home page"
+      url: https://probashi.gov.bd/
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: BD_BMET_HELPLINE
+    country: BD
+    name_en: BMET helpline
+    name_bn: বিএমইটি হেল্পলাইন
+    phone: "0249357972"
+    source:
+      title: "Bureau of Manpower, Employment and Training (BMET) – home page"
+      url: https://bmet.gov.bd/
+    verified: true
+    last_checked: 2026-10-11
+
+  # --- Labour Welfare Wings of Bangladesh missions (page content dated 1 May 2025) ---
+  - id: SA_RIYADH_LABOUR_WING
+    country: SA
+    name_en: Bangladesh Embassy Labour Welfare Wing, Riyadh (First Secretary, office)
+    name_bn: বাংলাদেশ দূতাবাস শ্রম উইং, রিয়াদ
+    phone: "+966 11 419 3944"
+    source: &wings
+      title: "Ministry of Expatriates' Welfare and Overseas Employment – Labour Welfare Wings contact list"
+      url: https://probashi.gov.bd/pages/static-pages/694032df35ce18e1c0563b95
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: SA_JEDDAH_LABOUR_WING
+    country: SA
+    name_en: Bangladesh Consulate Labour Welfare Wing, Jeddah (Counsellor, office)
+    name_bn: বাংলাদেশ কনস্যুলেট শ্রম উইং, জেদ্দা
+    phone: "+966-12689-6276 ext-131"
+    source: *wings
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: AE_ABUDHABI_LABOUR_WING
+    country: AE
+    name_en: Bangladesh Embassy Labour Welfare Wing, Abu Dhabi (Counsellor, office)
+    name_bn: বাংলাদেশ দূতাবাস শ্রম উইং, আবুধাবি
+    phone: "+971-2-446-2745"
+    source: *wings
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: AE_DUBAI_LABOUR_WING
+    country: AE
+    name_en: Bangladesh Consulate Labour Welfare Wing, Dubai (Counsellor, office)
+    name_bn: বাংলাদেশ কনস্যুলেট শ্রম উইং, দুবাই
+    phone: "+971-4269-0764"
+    source: *wings
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: QA_DOHA_LABOUR_WING
+    country: QA
+    name_en: Bangladesh Embassy Labour Welfare Wing, Doha (Counsellor, office)
+    name_bn: বাংলাদেশ দূতাবাস শ্রম উইং, দোহা
+    phone: "+974-4037-4725"
+    source: *wings
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: OM_MUSCAT_LABOUR_WING
+    country: OM
+    name_en: Bangladesh Embassy Labour Welfare Wing, Muscat (Counsellor, office)
+    name_bn: বাংলাদেশ দূতাবাস শ্রম উইং, মাস্কাট
+    phone: "+968-2469-8440"
+    source: *wings
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: KW_KUWAIT_LABOUR_WING
+    country: KW
+    name_en: Bangladesh Embassy Labour Welfare Wing, Kuwait City (Counsellor, office)
+    name_bn: বাংলাদেশ দূতাবাস শ্রম উইং, কুয়েত
+    phone: "+965-2491-3220"
+    source: *wings
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: MY_KL_LABOUR_WING
+    country: MY
+    name_en: Bangladesh High Commission Labour Welfare Wing, Kuala Lumpur (Counsellor, office)
+    name_bn: বাংলাদেশ হাইকমিশন শ্রম উইং, কুয়ালালামপুর
+    phone: "+6-03-4021-2504"
+    source: *wings
+    verified: true
+    last_checked: 2026-10-11

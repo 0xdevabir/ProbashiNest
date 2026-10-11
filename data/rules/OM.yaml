@@ -1,0 +1,67 @@
+# Oman — see data/README.md for the meaning of "verified".
+country: OM
+country_name_en: Oman
+country_name_bn: ওমান
+currency: OMR
+records:
+  - id: OM_MIN_WAGE
+    topic: minimum_wage
+    amount: null            # the Omani minimum wage applies to nationals only
+    text_en: Oman's minimum wage does not apply to migrant workers (the 325 rial minimum is for Omani nationals in the private sector), so the salary cannot be checked against a legal minimum.
+    text_bn: ওমানের সর্বনিম্ন বেতনের নিয়ম বিদেশি কর্মীর জন্য খাটে না। তাই বেতন আইনের সাথে মিলিয়ে দেখা যায় না।
+    source:
+      title: "ILO – Oman: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/oman-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: OM_RECRUITMENT_FEES
+    topic: recruitment_fees
+    text_en: Recruitment agencies are prohibited from charging fees to workers (Ministerial Decision No. 1 of 2011 on recruiting non-Omani workforce).
+    text_bn: ওমানের নিয়মে রিক্রুটিং এজেন্সি কর্মীর কাছ থেকে ফি নিতে পারে না।
+    source:
+      title: "ILO – Oman: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/oman-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: OM_PASSPORT
+    topic: passport_retention
+    text_en: Employers are prohibited from keeping the worker's passport or identity documents, except with the written permission of the worker (Labour Law, article 6).
+    text_bn: ওমানে মালিক কর্মীর পাসপোর্ট রাখতে পারে না। কর্মী লিখে অনুমতি দিলে তবেই রাখতে পারে।
+    source:
+      title: "ILO – Oman: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/oman-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: OM_CONTRACT
+    topic: contract
+    text_en: The contract must be drafted in Arabic in two original copies, one for each party; if it is in another language an Arabic copy must be attached. It may be for a fixed period of up to 5 years or indefinite.
+    text_bn: ওমানে চুক্তি আরবিতে দুই কপি হতে হবে। এক কপি কর্মীর কাছে থাকবে।
+    source:
+      title: "ILO – Oman: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/oman-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: OM_COMPLAINT
+    topic: complaint_channel
+    text_en: Workers can take a dispute to the Ministry of Labour, which tries to reach an amicable settlement within 30 days before the case goes to court. A claim for unfair dismissal must be made within 30 days.
+    text_bn: সমস্যা হলে ওমানের শ্রম মন্ত্রণালয়ে অভিযোগ করা যায়। সেখানে না মিটলে আদালতে যায়।
+    source:
+      title: "ILO – Oman: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/oman-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: OM_BD_COST_CEILING
+    topic: bd_migration_cost_ceiling
+    amount_bdt: 100780
+    text_en: The Bangladesh government fixed the maximum migration cost for Oman at Tk 100,780 (as reported in April 2019). The current official figure has not been re-confirmed on a government page.
+    text_bn: বাংলাদেশ সরকার ওমানে যাওয়ার সর্বোচ্চ খরচ ১ লাখ ৭৮০ টাকা ঠিক করেছিল (২০১৯ সালের খবর)। এখনকার হার বিএমইটি থেকে জেনে নিতে হবে।
+    source:
+      title: "The Financial Express – Migration cost may go up as airfare, medical fees rise (10 April 2019)"
+      url: https://thefinancialexpress.com.bd/trade/migration-cost-may-go-up-as-airfare-medical-fees-rise-1554871594
+    verified: false         # news report from 2019; TODO confirm current ceiling with BMET / the ministry
+    last_checked: 2026-10-11

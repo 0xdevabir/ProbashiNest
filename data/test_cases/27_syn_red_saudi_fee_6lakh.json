@@ -1,0 +1,22 @@
+{
+  "id": "syn_red_saudi_fee_6lakh",
+  "note": "Tk 600,000 demanded for Saudi Arabia: more than three times the reported government ceiling, no licence number.",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": true,
+  "expected_level": "red",
+  "offer": {
+    "employer_name": "Synthetic Trading Est (invented)",
+    "job_title": "Labourer",
+    "destination_country": "SA",
+    "agency_name": "Synthetic Fast Visa Centre (invented)",
+    "fees_charged_bdt": 600000,
+    "contract_duration_months": 24,
+    "visa_type": "Work visa",
+    "confidence": 0.9,
+    "monthly_salary": {
+      "amount": 1200,
+      "currency": "SAR"
+    }
+  }
+}

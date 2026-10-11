@@ -1,0 +1,23 @@
+{
+  "id": "syn_amber_no_licence_number",
+  "note": "Good-looking offer but no licence number and an agency name that is not in the register (invented name).",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": false,
+  "expected_level": "amber",
+  "offer": {
+    "employer_name": "Synthetic Facilities Co (invented)",
+    "job_title": "Cleaner",
+    "destination_country": "QA",
+    "agency_name": "Synthetic Dream Gulf Manpower (invented)",
+    "agency_license_no": null,
+    "fees_charged_bdt": 0,
+    "contract_duration_months": 24,
+    "visa_type": "Work visa",
+    "confidence": 0.9,
+    "monthly_salary": {
+      "amount": 1300,
+      "currency": "QAR"
+    }
+  }
+}

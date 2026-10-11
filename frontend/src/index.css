@@ -1,0 +1,69 @@
+@import '@fontsource/hind-siliguri/bengali-400.css';
+@import '@fontsource/hind-siliguri/bengali-600.css';
+@import '@fontsource/hind-siliguri/latin-400.css';
+@import '@fontsource/hind-siliguri/latin-600.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Hind Siliguri', system-ui, sans-serif;
+  /* Only the 400 and 600 faces are shipped, to keep the first load small on slow networks. */
+  --font-weight-bold: 600;
+
+  /* Chrome is passport-stamp indigo on cool paper, so it never competes with the three signal colours. */
+  --color-paper: #f2f4f9;
+  --color-ink: #141a33;
+  --color-muted: #4a5272;
+  --color-line: #cfd5e6;
+  --color-stamp: #27348b;
+  --color-stamp-deep: #1a2466;
+
+  --color-stop: #b42318;
+  --color-stop-tint: #fdecea;
+  --color-wait: #f5a300;
+  --color-wait-ink: #6b3d00;
+  --color-wait-tint: #fff3d1;
+  --color-go: #136c3f;
+  --color-go-tint: #e2f4e9;
+
+  --animate-lamp: lamp 1.8s ease-in-out infinite backwards;
+  --animate-ring: ring 1.4s ease-out infinite;
+
+  @keyframes lamp {
+    0%, 100% { opacity: 0.22; }
+    20%, 45% { opacity: 1; }
+  }
+  @keyframes ring {
+    from { box-shadow: 0 0 0 0 rgb(255 255 255 / 0.55); }
+    to { box-shadow: 0 0 0 22px rgb(255 255 255 / 0); }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+    /* Bangla conjuncts and vowel signs need more vertical room than Latin. */
+    line-height: 1.6;
+  }
+  :focus-visible {
+    @apply outline-3 outline-offset-2 outline-stamp;
+  }
+  button,
+  a,
+  summary,
+  label {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

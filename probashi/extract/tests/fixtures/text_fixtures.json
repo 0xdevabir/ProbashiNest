@@ -1,0 +1,124 @@
+{
+  "_note": "SYNTHETIC test data. The agency name and licence number are made up. Nothing here is real.",
+  "fixtures": [
+    {
+      "id": "t1_saudi_cleaner",
+      "case": "the example from the brief: Bangla digits, lakh",
+      "text": "সৌদিতে ক্লিনারের কাজ, বেতন ১০০০ রিয়াল, এজেন্টকে ৫ লাখ টাকা দিতে হবে",
+      "expected": {
+        "employer_name": null,
+        "job_title": ["cleaner"],
+        "destination_country": "SA",
+        "salary_amount": 1000, "salary_currency": "SAR",
+        "agency_name": null,
+        "agency_license_no": null,
+        "fees_charged_bdt": 500000,
+        "contract_duration_months": null,
+        "visa_type": null,
+        "document_language": ["bn"]
+      }
+    },
+    {
+      "id": "t2_malaysia_number_words",
+      "case": "amounts as spoken words, the way speech-to-text writes them",
+      "text": "আমার ভাই মালয়েশিয়া যাবে। কারখানায় কাজ। মাসে বেতন পনেরোশ রিঙ্গিত। দালাল সাড়ে চার লাখ টাকা চাইছে। তিন বছরের চুক্তি।",
+      "expected": {
+        "employer_name": null,
+        "job_title": ["factory worker"],
+        "destination_country": "MY",
+        "salary_amount": 1500, "salary_currency": "MYR",
+        "agency_name": null,
+        "agency_license_no": null,
+        "fees_charged_bdt": 450000,
+        "contract_duration_months": 36,
+        "visa_type": null,
+        "document_language": ["bn"]
+      }
+    },
+    {
+      "id": "t3_dubai_free_visa",
+      "case": "city instead of country, 'free visa', fee as lakh + hazar",
+      "text": "দুবাইতে ড্রাইভারের চাকরি। ফ্রি ভিসা দিবে বলছে। বেতন ১২০০ দিরহাম। খরচ ৩ লাখ ৫০ হাজার টাকা।",
+      "expected": {
+        "employer_name": null,
+        "job_title": ["driver"],
+        "destination_country": "AE",
+        "salary_amount": 1200, "salary_currency": "AED",
+        "agency_name": null,
+        "agency_license_no": null,
+        "fees_charged_bdt": 350000,
+        "contract_duration_months": null,
+        "visa_type": "free",
+        "document_language": ["bn"]
+      }
+    },
+    {
+      "id": "t4_qatar_with_agency",
+      "case": "agency name and licence number spoken; 'riyal' must become QAR, not SAR",
+      "text": "কাতারে রাজমিস্ত্রির কাজ, বেতন ১৮০০ রিয়াল, দুই বছরের চুক্তি। এজেন্সির নাম নমুনা ওভারসিজ, লাইসেন্স নম্বর আরএল ৯৯৯৯১। এজেন্সি দেড় লাখ টাকা নিবে।",
+      "expected": {
+        "employer_name": null,
+        "job_title": ["mason"],
+        "destination_country": "QA",
+        "salary_amount": 1800, "salary_currency": "QAR",
+        "agency_name": ["নমুনা ওভারসিজ", "Namuna Overseas"],
+        "agency_license_no": "RL-99991",
+        "fees_charged_bdt": 150000,
+        "contract_duration_months": 24,
+        "visa_type": null,
+        "document_language": ["bn"]
+      }
+    },
+    {
+      "id": "t5_almost_nothing",
+      "case": "only a fee is known; everything else must stay empty",
+      "text": "এজেন্ট বলছে বিদেশে ভালো কাজ আছে। আগে ২ লাখ টাকা দিতে হবে। কোন দেশ এখনো বলে নাই।",
+      "expected": {
+        "employer_name": null,
+        "job_title": null,
+        "destination_country": null,
+        "salary_amount": null, "salary_currency": null,
+        "agency_name": null,
+        "agency_license_no": null,
+        "fees_charged_bdt": 200000,
+        "contract_duration_months": null,
+        "visa_type": null,
+        "document_language": ["bn"]
+      }
+    },
+    {
+      "id": "t6_oman_visit_visa",
+      "case": "visit visa with a promise of a work visa later; currency word before the number",
+      "text": "ওমানে বাসার কাজ। বেতন ৯০ রিয়াল। ভিজিট ভিসায় নিবে, পরে কাজের ভিসা করে দিবে বলছে। টাকা লাগবে ২ লাখ ৮০ হাজার।",
+      "expected": {
+        "employer_name": null,
+        "job_title": ["domestic worker", "housemaid", "house worker"],
+        "destination_country": "OM",
+        "salary_amount": 90, "salary_currency": "OMR",
+        "agency_name": null,
+        "agency_license_no": null,
+        "fees_charged_bdt": 280000,
+        "contract_duration_months": null,
+        "visa_type": "visit",
+        "document_language": ["bn"]
+      }
+    },
+    {
+      "id": "t7_kuwait_romanised",
+      "case": "Bangla typed in Latin letters",
+      "text": "Kuwait e cleaner er kaj, salary 120 dinar, agent 6 lakh taka chay, 2 bochor er contract",
+      "expected": {
+        "employer_name": null,
+        "job_title": ["cleaner"],
+        "destination_country": "KW",
+        "salary_amount": 120, "salary_currency": "KWD",
+        "agency_name": null,
+        "agency_license_no": null,
+        "fees_charged_bdt": 600000,
+        "contract_duration_months": 24,
+        "visa_type": null,
+        "document_language": ["bn"]
+      }
+    }
+  ]
+}

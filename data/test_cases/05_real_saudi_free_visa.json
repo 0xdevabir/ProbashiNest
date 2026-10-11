@@ -1,0 +1,14 @@
+{
+  "id": "real_saudi_free_visa",
+  "note": "Saudi 'free visa': worker listed as a household worker in name only, with no guaranteed job. Only facts stated in the report are filled in; everything else is left empty.",
+  "synthetic": false,
+  "source_url": "https://www.dhakatribune.com/bangladesh/227247/inside-the-dangerous-world-of-the-saudi-free-visa",
+  "is_fraud": true,
+  "expected_level": "red",
+  "offer": {
+    "job_title": "Household worker",
+    "destination_country": "SA",
+    "visa_type": "Free visa",
+    "confidence": 0.8
+  }
+}

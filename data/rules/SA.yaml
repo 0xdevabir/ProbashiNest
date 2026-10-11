@@ -1,0 +1,70 @@
+# Saudi Arabia — rules used by the verdict engine and the retriever.
+# "verified: true" means: on last_checked we opened the cited document and read
+# this exact point there, and the document is a primary/authoritative source
+# (government page, ILO factsheet, gazette text). News-only facts are verified: false.
+country: SA
+country_name_en: Saudi Arabia
+country_name_bn: সৌদি আরব
+currency: SAR
+records:
+  - id: SA_MIN_WAGE
+    topic: minimum_wage
+    amount: null            # no legal minimum wage for migrant workers
+    text_en: Saudi law does not set a minimum wage for migrant workers, so the salary cannot be checked against a legal minimum.
+    text_bn: সৌদি আরবে বিদেশি কর্মীর জন্য আইনে কোনো সর্বনিম্ন বেতন ঠিক করা নেই। তাই বেতন আইনের সাথে মিলিয়ে দেখা যায় না।
+    source:
+      title: "ILO – Saudi Arabia: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/saudi-arabia-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: SA_RECRUITMENT_FEES
+    topic: recruitment_fees
+    text_en: The employer must pay the recruitment fees and the residence permit (iqama) and work permit fees of the worker (Labour Law, article 40). For domestic workers, employers cannot deduct recruitment fees from wages.
+    text_bn: সৌদি আইনে নিয়োগের খরচ, ইকামা আর ওয়ার্ক পারমিটের খরচ মালিককে দিতে হয়। কর্মীর বেতন থেকে এই টাকা কাটা যায় না।
+    source:
+      title: "ILO – Saudi Arabia: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/saudi-arabia-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: SA_PASSPORT
+    topic: passport_retention
+    text_en: Employers are prohibited from confiscating migrant workers' passports; this carries a fine. The ILO notes that for domestic workers the prohibition is not explicit.
+    text_bn: সৌদি আরবে মালিক কর্মীর পাসপোর্ট আটকে রাখতে পারে না। রাখলে জরিমানা হয়।
+    source:
+      title: "ILO – Saudi Arabia: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/saudi-arabia-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: SA_CONTRACT
+    topic: contract
+    text_en: There must be a written employment contract; the Arabic version is the official one in a dispute. Domestic worker contracts must be documented on the government Musaned platform.
+    text_bn: লিখিত চুক্তি থাকতে হবে। ঝামেলা হলে আরবি চুক্তিটাই ধরা হয়। গৃহকর্মীর চুক্তি সরকারের মুসানেদ সিস্টেমে থাকতে হয়।
+    source:
+      title: "ILO – Saudi Arabia: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/saudi-arabia-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: SA_COMPLAINT
+    topic: complaint_channel
+    text_en: A labour complaint is first filed for amicable settlement with the Labour Office of the Ministry of Human Resources and Social Development (MHRSD), which can be done electronically; unresolved cases go to the Labour Court.
+    text_bn: সমস্যা হলে আগে সৌদি শ্রম অফিসে (MHRSD) অভিযোগ করতে হয়। সেখানে না মিটলে শ্রম আদালতে যায়।
+    source:
+      title: "ILO – Saudi Arabia: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/saudi-arabia-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: SA_BD_COST_CEILING
+    topic: bd_migration_cost_ceiling
+    amount_bdt: 165000
+    text_en: The Bangladesh government fixed the maximum migration cost for Saudi Arabia at Tk 165,000 (as reported in April 2019). The current official figure has not been re-confirmed on a government page.
+    text_bn: বাংলাদেশ সরকার সৌদি আরবে যাওয়ার সর্বোচ্চ খরচ ১ লাখ ৬৫ হাজার টাকা ঠিক করেছিল (২০১৯ সালের খবর)। এখনকার হার বিএমইটি থেকে জেনে নিতে হবে।
+    source:
+      title: "The Financial Express – Migration cost may go up as airfare, medical fees rise (10 April 2019)"
+      url: https://thefinancialexpress.com.bd/trade/migration-cost-may-go-up-as-airfare-medical-fees-rise-1554871594
+    verified: false         # news report from 2019; TODO confirm current ceiling with BMET / the ministry
+    last_checked: 2026-10-11

@@ -1,0 +1,7 @@
+# Extra dependency of probashi.knowledge on top of the root pyproject.toml.
+# (Agent 1: please add PyYAML to the project dependencies.)
+PyYAML>=6.0
+
+# Optional, only for KNOWLEDGE_RETRIEVER=embedding (large download; the default
+# lexical retriever needs nothing extra):
+# sentence-transformers>=3.0

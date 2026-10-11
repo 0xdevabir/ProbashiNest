@@ -1,0 +1,47 @@
+# Local development: backend API + frontend dev server.
+#   docker compose up --build
+# Backend:  http://localhost:8000   (docs at /docs)
+# Frontend: http://localhost:5173
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      # Values come from .env if present; the defaults run everything on stubs.
+      USE_STUBS: ${USE_STUBS:-true}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
+      MAX_UPLOAD_MB: ${MAX_UPLOAD_MB:-10}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      LLM_PROVIDER: ${LLM_PROVIDER:-anthropic}
+      LLM_MODEL: ${LLM_MODEL:-claude-sonnet-5-5}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      VOICE_STT_PROVIDER: ${VOICE_STT_PROVIDER:-}
+      VOICE_TTS_PROVIDER: ${VOICE_TTS_PROVIDER:-}
+    # No volumes on purpose: uploads are processed in memory and never stored.
+    read_only: true
+    tmpfs:
+      - /tmp
+
+  frontend:
+    # Runs Agent 5's Vite dev server straight from ./frontend.
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:8000}
+      VITE_DEMO_MODE: ${VITE_DEMO_MODE:-false}
+    command: >
+      sh -c "if [ -f package.json ]; then npm install && npm run dev -- --host 0.0.0.0 --port 5173;
+      else echo 'frontend/package.json not found yet (Agent 5). Skipping frontend.'; fi"
+    depends_on:
+      - backend
+
+volumes:
+  frontend_node_modules:

@@ -12,13 +12,16 @@ dependencies = [
     "pydantic>=2.6",
     "anthropic>=0.40",
     "python-dotenv>=1.0",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "python-multipart>=0.0.9",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "httpx>=0.27"]
 
 [tool.setuptools.packages.find]
-include = ["probashi*"]
+include = ["probashi*", "backend*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests", "probashi", "backend"]
