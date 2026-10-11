@@ -1,0 +1,68 @@
+# United Arab Emirates — see data/README.md for the meaning of "verified".
+country: AE
+country_name_en: United Arab Emirates
+country_name_bn: সংযুক্ত আরব আমিরাত (দুবাই/আবুধাবি)
+currency: AED
+records:
+  - id: AE_MIN_WAGE
+    topic: minimum_wage
+    amount: null            # no statutory minimum wage at the time of the source
+    text_en: The UAE has no minimum wage set by law at present (one is to be introduced by Cabinet decision), so the salary cannot be checked against a legal minimum.
+    text_bn: আমিরাতে আইনে এখনো কোনো সর্বনিম্ন বেতন ঠিক করা নেই। তাই বেতন আইনের সাথে মিলিয়ে দেখা যায় না।
+    source:
+      title: "ILO – United Arab Emirates: Regulatory framework governing migrant workers (updated May 2024)"
+      url: https://www.ilo.org/publications/united-arab-emirates-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: AE_RECRUITMENT_FEES
+    topic: recruitment_fees
+    text_en: An employer cannot charge the worker, or collect from the worker, recruitment and employment costs, directly or indirectly (Labour Law, article 6). Recruitment agencies may not take any commission or expenses from domestic workers.
+    text_bn: আমিরাতের আইনে মালিক কর্মীর কাছ থেকে নিয়োগের খরচ নিতে পারে না। সরাসরিও না, ঘুরিয়েও না।
+    source:
+      title: "ILO – United Arab Emirates: Regulatory framework governing migrant workers (updated May 2024)"
+      url: https://www.ilo.org/publications/united-arab-emirates-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: AE_PASSPORT
+    topic: passport_retention
+    text_en: An employer cannot withhold a worker's official documents such as the passport (Labour Law, article 13(2)). Domestic workers must be allowed to keep all their official documents.
+    text_bn: আমিরাতে মালিক কর্মীর পাসপোর্ট বা কাগজপত্র আটকে রাখতে পারে না।
+    source:
+      title: "ILO – United Arab Emirates: Regulatory framework governing migrant workers (updated May 2024)"
+      url: https://www.ilo.org/publications/united-arab-emirates-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: AE_CONTRACT
+    topic: contract
+    text_en: The employment contract must follow the relevant Approved Standard Employment Contract of the Ministry of Human Resources and Emiratisation (MOHRE), and be for a defined period.
+    text_bn: চাকরির চুক্তি আমিরাতের শ্রম মন্ত্রণালয়ের (MOHRE) ঠিক করা ফরমে হতে হবে। চুক্তিতে মেয়াদ লেখা থাকতে হবে।
+    source:
+      title: "ILO – United Arab Emirates: Regulatory framework governing migrant workers (updated May 2024)"
+      url: https://www.ilo.org/publications/united-arab-emirates-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: AE_COMPLAINT
+    topic: complaint_channel
+    phone: "80084"          # as printed in the ILO factsheet (MOHRE hotline for non-nationals); not re-checked on mohre.gov.ae
+    text_en: A labour complaint can be registered on the MOHRE website or app, or by calling the MOHRE hotline for non-nationals (80084), within 30 days of the breach.
+    text_bn: সমস্যা হলে আমিরাতের শ্রম মন্ত্রণালয়ে (MOHRE) অভিযোগ করা যায়। ওয়েবসাইট, অ্যাপ বা 80084 নম্বরে ফোন করে।
+    source:
+      title: "ILO – United Arab Emirates: Regulatory framework governing migrant workers (updated May 2024)"
+      url: https://www.ilo.org/publications/united-arab-emirates-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: AE_BD_COST_CEILING
+    topic: bd_migration_cost_ceiling
+    amount_bdt: 107780
+    text_en: The Bangladesh government fixed the maximum migration cost for the UAE at Tk 107,780 (as reported in April 2019). The current official figure has not been re-confirmed on a government page.
+    text_bn: বাংলাদেশ সরকার আমিরাতে যাওয়ার সর্বোচ্চ খরচ ১ লাখ ৭ হাজার ৭৮০ টাকা ঠিক করেছিল (২০১৯ সালের খবর)। এখনকার হার বিএমইটি থেকে জেনে নিতে হবে।
+    source:
+      title: "The Financial Express – Migration cost may go up as airfare, medical fees rise (10 April 2019)"
+      url: https://thefinancialexpress.com.bd/trade/migration-cost-may-go-up-as-airfare-medical-fees-rise-1554871594
+    verified: false         # news report from 2019; TODO confirm current ceiling with BMET / the ministry
+    last_checked: 2026-10-11

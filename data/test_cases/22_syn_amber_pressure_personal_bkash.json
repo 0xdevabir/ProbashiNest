@@ -1,0 +1,14 @@
+{
+  "id": "syn_amber_pressure_personal_bkash",
+  "note": "Voice transcript: told to send money today to a personal bKash number. Nothing else is known.",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": true,
+  "expected_level": "amber",
+  "offer": {
+    "destination_country": "OM",
+    "job_title": "Helper",
+    "raw_text": "ওমানে হেলপারের কাজ। দালাল বলেছে আজকেই টাকা দিতে হবে। তার পার্সোনাল বিকাশ নম্বরে পাঠাতে বলেছে।",
+    "confidence": 0.7
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "syn_red_kuwait_below_minimum_wage",
+  "note": "Domestic worker in Kuwait at 50 dinars, below the 75 dinar minimum. The agency is real and licensed but did NOT make this offer; the offer is invented.",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": true,
+  "expected_level": "red",
+  "offer": {
+    "employer_name": "Synthetic Household (invented)",
+    "job_title": "Housemaid",
+    "destination_country": "KW",
+    "agency_name": "2PLUS OVERSEAS LTD",
+    "agency_license_no": "RL2889",
+    "fees_charged_bdt": 0,
+    "contract_duration_months": 24,
+    "visa_type": "Domestic worker visa",
+    "confidence": 0.9,
+    "monthly_salary": {
+      "amount": 50,
+      "currency": "KWD"
+    }
+  }
+}

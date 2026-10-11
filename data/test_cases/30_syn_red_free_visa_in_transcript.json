@@ -1,0 +1,14 @@
+{
+  "id": "syn_red_free_visa_in_transcript",
+  "note": "Voice transcript mentioning a 'free visa' for Saudi Arabia (pattern from the Dhaka Tribune report; transcript invented).",
+  "synthetic": true,
+  "source_url": "https://www.dhakatribune.com/bangladesh/227247/inside-the-dangerous-world-of-the-saudi-free-visa",
+  "is_fraud": true,
+  "expected_level": "red",
+  "offer": {
+    "destination_country": "SA",
+    "fees_charged_bdt": 350000,
+    "raw_text": "দালাল বলছে সৌদির ফ্রি ভিসা আছে, সাড়ে তিন লাখ টাকা লাগবে। গিয়ে যে কোনো কাজ করা যাবে।",
+    "confidence": 0.7
+  }
+}

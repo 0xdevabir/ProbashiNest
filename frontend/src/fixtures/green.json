@@ -1,0 +1,56 @@
+{
+  "offer": {
+    "employer_name": "Sample Technical Services LLC (synthetic)",
+    "job_title": "Electrician",
+    "destination_country": "AE",
+    "monthly_salary": { "amount": 1800, "currency": "AED" },
+    "agency_name": "নমুনা ইন্টারন্যাশনাল (কাল্পনিক)",
+    "agency_license_no": "RL-0000 (কাল্পনিক)",
+    "fees_charged_bdt": 150000,
+    "contract_duration_months": 24,
+    "visa_type": "Employment visa",
+    "document_language": "en",
+    "raw_text": "[SYNTHETIC DEMO DATA — not a real document] EMPLOYMENT CONTRACT. Employer: Sample Technical Services LLC. Position: Electrician. Salary: AED 1,800 per month. Contract period: 24 months. Visa: Employment visa. Recruiting agent: Sample International, RL-0000. Service charge: BDT 150,000, receipt to be issued.",
+    "missing_fields": [],
+    "confidence": 0.93
+  },
+  "verdict": {
+    "level": "green",
+    "reasons": [
+      {
+        "code": "LICENSE_VERIFIED",
+        "message_bn": "এজেন্সির লাইসেন্স নম্বর সরকারি তালিকার সাথে মিলেছে।",
+        "message_en": "The agency's licence number matches the government list.",
+        "source": {
+          "title": "Overseas Employment Platform: recruiting agency list",
+          "url": "https://www.oep.gov.bd/agencies"
+        }
+      },
+      {
+        "code": "CONTRACT_COMPLETE",
+        "message_bn": "বেতন, কাজের ধরন ও চুক্তির মেয়াদ কাগজে লেখা আছে।",
+        "message_en": "Salary, job and contract length are all written in the document.",
+        "source": null
+      },
+      {
+        "code": "WORK_VISA",
+        "message_bn": "কাজের ভিসা দেওয়া হচ্ছে এবং টাকার রসিদ দেওয়ার কথা লেখা আছে।",
+        "message_en": "A work visa is offered and the document promises a receipt for the fee.",
+        "source": null
+      }
+    ],
+    "next_steps_bn": [
+      "টাকা দিলে অবশ্যই রসিদ নিন।",
+      "চুক্তির একটি কপি নিজের কাছে রাখুন।",
+      "সব কাগজের ফটোকপি পরিবারের কাছে রেখে যান।",
+      "কোনো সন্দেহ হলে ১৬১৩৫ নম্বরে ফোন করুন।"
+    ],
+    "helplines": [
+      { "name": "প্রবাসবন্ধু কল সেন্টার (দেশ থেকে)", "phone": "16135" },
+      { "name": "প্রবাসবন্ধু কল সেন্টার (বিদেশ থেকে)", "phone": "+8809610102030" }
+    ],
+    "disclaimer_bn": "এটি একটি প্রাথমিক পরামর্শ, আইনি পরামর্শ নয়। চূড়ান্ত সিদ্ধান্তের আগে সরকারি অফিসে যাচাই করুন।"
+  },
+  "transcript_bn": null,
+  "audio_base64": null
+}

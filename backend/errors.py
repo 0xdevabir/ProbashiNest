@@ -94,3 +94,54 @@ def stage_failed(stage: str) -> ApiError:
         "এখন যাচাই করা যাচ্ছে না। একটু পরে আবার চেষ্টা করুন।",
         f"The '{stage}' step failed. No verdict was produced. Try again later.",
     )
+
+
+def rate_limited(retry_after: int) -> ApiError:
+    err = ApiError(
+        429,
+        "RATE_LIMITED",
+        "অনেকবার চেষ্টা হয়েছে। এক মিনিট পরে আবার চেষ্টা করুন।",
+        f"Too many requests. Try again in {retry_after} seconds.",
+    )
+    err.headers = {"Retry-After": str(retry_after)}
+    return err
+
+
+def too_many_images(limit: int) -> ApiError:
+    return ApiError(
+        422,
+        "TOO_MANY_IMAGES",
+        f"একসাথে {limit}টার বেশি কাগজ দেওয়া যায় না।",
+        f"At most {limit} documents can be checked together.",
+    )
+
+
+def consent_required() -> ApiError:
+    return ApiError(
+        422,
+        "CONSENT_REQUIRED",
+        "আপনি রাজি না হলে আমরা কিছু জমা রাখি না।",
+        "A report is stored only with consent. Send consent: true.",
+    )
+
+
+def reporting_off() -> ApiError:
+    return ApiError(
+        503,
+        "REPORTING_OFF",
+        "এখন রিপোর্ট নেওয়া হচ্ছে না। ১৬১৩৫ নম্বরে ফোন করে জানান।",
+        "Reporting is not enabled on this server (REPORTS_PATH is not set).",
+    )
+
+
+def guide_unavailable() -> ApiError:
+    return ApiError(
+        503,
+        "GUIDE_UNAVAILABLE",
+        "এখন তথ্য দেখানো যাচ্ছে না। একটু পরে আবার চেষ্টা করুন।",
+        "The guide could not be loaded. Try again later.",
+    )
+
+
+def not_found() -> ApiError:
+    return ApiError(404, "NOT_FOUND", "এটা পাওয়া যায়নি।", "Not found.")

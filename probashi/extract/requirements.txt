@@ -1,0 +1,4 @@
+# Extra dependencies of probashi/extract that are not yet in the root
+# pyproject.toml (owned by Agent 1). Remove this file once they are added there.
+Pillow>=10.0
+pypdfium2>=4.0  # only needed for PDF input; images work without it

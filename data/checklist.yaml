@@ -1,0 +1,39 @@
+# Steps a worker completes in Bangladesh before flying on a work visa.
+# Same record shape and "verified" meaning as the rules (see data/README.md).
+#
+# All four steps are verified: false. They were read in a travel-company guide that
+# describes the BMET process, not on a government page (bmet.gov.bd failed its TLS
+# check from our machine on 2026-10-11).
+# TODO: open bmet.gov.bd by hand, confirm each step, replace the source, set verified: true.
+#
+# The order of the list is the order shown to the worker.
+steps:
+  - id: PD_REGISTRATION
+    text_en: Register with BMET using your national ID and passport, online or in person at your district Technical Training Centre (TTC).
+    text_bn: বিএমইটি-তে নাম নিবন্ধন করুন। জাতীয় পরিচয়পত্র আর পাসপোর্ট লাগবে। জেলার টিটিসি-তে গিয়েও করা যায়।
+    source: &wego
+      title: "Wego Travel Blog – BMET registration guide (updated 11 August 2026)"
+      url: https://blog.wego.com/bmet-registration/
+    verified: false
+    last_checked: 2026-10-11
+
+  - id: PD_FINGERPRINT
+    text_en: Give your fingerprints at the district BMET office. This cannot be done online.
+    text_bn: জেলার বিএমইটি অফিসে গিয়ে আঙুলের ছাপ দিন। এটা অনলাইনে হয় না।
+    source: *wego
+    verified: false
+    last_checked: 2026-10-11
+
+  - id: PD_ORIENTATION
+    text_en: Attend the three-day pre-departure orientation (PDO) at a TTC in your district.
+    text_bn: জেলার টিটিসি-তে তিন দিনের প্রশিক্ষণ (পিডিও) নিন।
+    source: *wego
+    verified: false
+    last_checked: 2026-10-11
+
+  - id: PD_CLEARANCE_CARD
+    text_en: Get the BMET emigration clearance card and show it at airport immigration. Without it you cannot fly, even with a valid work visa.
+    text_bn: বিএমইটি-র ছাড়পত্র কার্ড নিন। বিমানবন্দরে এটা দেখাতে হয়। কার্ড ছাড়া কাজের ভিসা থাকলেও যেতে দেবে না।
+    source: *wego
+    verified: false
+    last_checked: 2026-10-11

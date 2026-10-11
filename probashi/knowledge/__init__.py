@@ -1,10 +1,29 @@
-"""Owner: Agent 2 (knowledge base, RAG and verdict engine).
+"""Owner: Agent 2 (knowledge base, retrieval and verdict engine).
 
-Placeholder created during repo setup so imports work. Replace with the
-real implementation; keep the function signature unchanged.
+    from probashi.knowledge import evaluate
+    verdict = evaluate(offer)
+
+See README.md in this folder for the level logic and the data sources.
 """
+
+import logging
+
 from probashi.schemas import ExtractedOffer, Verdict
+
+logger = logging.getLogger(__name__)
 
 
 def evaluate(offer: ExtractedOffer) -> Verdict:
-    raise NotImplementedError("probashi.knowledge is not implemented yet (Agent 2)")
+    """Traffic-light verdict for an extracted job offer.
+
+    Deterministic rules decide the level. If the knowledge base cannot be loaded
+    the answer is amber ("could not check"), never green.
+    """
+    from .engine import explain, unavailable_verdict
+    from .kb import KnowledgeBaseError
+
+    try:
+        return explain(offer)[0]
+    except KnowledgeBaseError:
+        logger.exception("knowledge base could not be loaded")
+        return unavailable_verdict()

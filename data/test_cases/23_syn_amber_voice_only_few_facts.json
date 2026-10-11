@@ -1,0 +1,23 @@
+{
+  "id": "syn_amber_voice_only_few_facts",
+  "note": "Voice transcript with only destination and job; everything else unknown. Unknown must be amber, never green.",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": false,
+  "expected_level": "amber",
+  "offer": {
+    "destination_country": "SA",
+    "job_title": "Driver",
+    "raw_text": "সৌদিতে ড্রাইভারের চাকরি দিবে বলছে।",
+    "missing_fields": [
+      "employer_name",
+      "monthly_salary",
+      "agency_name",
+      "agency_license_no",
+      "fees_charged_bdt",
+      "contract_duration_months",
+      "visa_type"
+    ],
+    "confidence": 0.6
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "syn_green_saudi_bangla_licence",
+  "note": "Complete Saudi offer with the licence number written in Bangla digits; no fee. The agency is real and licensed but did NOT make this offer; the offer is invented.",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": false,
+  "expected_level": "green",
+  "offer": {
+    "employer_name": "Synthetic Contracting Est (invented)",
+    "job_title": "Electrician",
+    "destination_country": "SA",
+    "agency_name": "2PLUS OVERSEAS LTD",
+    "agency_license_no": "আরএল-২৮৮৯",
+    "fees_charged_bdt": 0,
+    "contract_duration_months": 24,
+    "visa_type": "কাজের ভিসা",
+    "confidence": 0.9,
+    "monthly_salary": {
+      "amount": 1800,
+      "currency": "SAR"
+    }
+  }
+}

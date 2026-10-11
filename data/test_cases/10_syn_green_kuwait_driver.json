@@ -1,0 +1,23 @@
+{
+  "id": "syn_green_kuwait_driver",
+  "note": "Complete offer, salary above Kuwait minimum wage, no fee. The agency is real and licensed but did NOT make this offer; the offer is invented.",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": false,
+  "expected_level": "green",
+  "offer": {
+    "employer_name": "Synthetic Transport WLL (invented)",
+    "job_title": "Driver",
+    "destination_country": "KW",
+    "agency_name": "2Plus Overseas Ltd.",
+    "agency_license_no": "RL2889",
+    "fees_charged_bdt": 0,
+    "contract_duration_months": 24,
+    "visa_type": "Work visa (Article 18)",
+    "confidence": 0.9,
+    "monthly_salary": {
+      "amount": 120,
+      "currency": "KWD"
+    }
+  }
+}

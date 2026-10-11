@@ -1,0 +1,13 @@
+{
+  "id": "real_uae_tourist_visa_26",
+  "note": "Fake recruitment firm took large sums and brought 26 Bangladeshi job seekers to the UAE on tourist visas. Only facts stated in the report are filled in; everything else is left empty.",
+  "synthetic": false,
+  "source_url": "https://www.khaleejtimes.com/uae/scammers-leave-26-job-seekers-without-food-shelter-in-uae",
+  "is_fraud": true,
+  "expected_level": "red",
+  "offer": {
+    "destination_country": "AE",
+    "visa_type": "Tourist visa",
+    "confidence": 0.8
+  }
+}

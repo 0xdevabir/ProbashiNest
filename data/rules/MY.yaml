@@ -1,0 +1,46 @@
+# Malaysia — see data/README.md for the meaning of "verified".
+# Malaysia is the weakest-sourced country in this knowledge base: only the minimum
+# wage was read in a primary text. Fees, passport and complaint rules are TODO.
+country: MY
+country_name_en: Malaysia
+country_name_bn: মালয়েশিয়া
+currency: MYR
+records:
+  - id: MY_MIN_WAGE
+    topic: minimum_wage
+    amount: 1700
+    currency: MYR
+    excludes_domestic: true    # reported exclusion of domestic servants; this detail was NOT re-read in the gazette text (unverified)
+    text_en: The minimum wage is RM1,700 a month under the Minimum Wages Order 2024 (P.U.(A) 376/2024), from 1 February 2025 for employers with five or more workers and from 1 August 2025 for all other employers.
+    text_bn: মালয়েশিয়ায় সর্বনিম্ন বেতন মাসে ১,৭০০ রিঙ্গিত। এই নিয়ম ২০২৫ সাল থেকে চালু।
+    source:
+      title: "Malaysia Federal Gazette – Minimum Wages Order 2024, P.U.(A) 376/2024 (gazette text; copy hosted by AmCham Malaysia)"
+      url: https://amcham.com.my/wp-content/uploads/PUA-376.pdf
+    verified: true             # gazette text read directly, but from a non-government host; TODO replace with the official e-Federal Gazette link
+    last_checked: 2026-10-11
+
+  - id: MY_BD_COST_CEILING
+    topic: bd_migration_cost_ceiling
+    amount_bdt: 78990
+    text_en: The Bangladesh government capped the official migration cost for Malaysia at Tk 78,990 per worker, according to Anti-Corruption Commission statements reported in the press. (An older 2019 report gave Tk 160,000.) The current official figure has not been confirmed on a government page.
+    text_bn: খবর অনুযায়ী বাংলাদেশ সরকার মালয়েশিয়া যাওয়ার সর্বোচ্চ খরচ ৭৮ হাজার ৯৯০ টাকা ঠিক করেছিল। এখনকার হার বিএমইটি থেকে জেনে নিতে হবে।
+    source:
+      title: "People Matters – ACC to sue 124 owners and officials of 60 recruiting agencies over Tk 4,500 crore Malaysia scam"
+      url: https://sea.peoplemattersglobal.com/news/workforce-planning/acc-to-sue-124-owners-and-officials-of-60-recruiting-agencies-over-tk-4500-crore-malaysia-scam-47701
+    verified: false            # trade-press report of an ACC statement; TODO confirm with BMET / the ministry
+    last_checked: 2026-10-11
+
+  - id: MY_OVERCHARGING_PATTERN
+    topic: recruitment_fees
+    text_en: UN human rights experts reported that Bangladeshi workers going to Malaysia were recruited by companies that are frequently fake, found that promised jobs did not exist, and paid recruitment fees reportedly more than five times the official fee, pushing them into debt bondage.
+    text_bn: জাতিসংঘের বিশেষজ্ঞরা বলেছেন, মালয়েশিয়াগামী অনেক বাংলাদেশি কর্মী ভুয়া কোম্পানির ফাঁদে পড়েছেন। গিয়ে দেখেছেন কাজ নেই। সরকারি খরচের পাঁচ গুণের বেশি টাকা দিতে হয়েছে।
+    source:
+      title: "OHCHR – Malaysia: UN experts sound alarm over continued systematic exploitation of Bangladeshi migrant workers (November 2025)"
+      url: https://www.ohchr.org/en/press-releases/2025/11/malaysia-un-experts-sound-alarm-over-continued-systematic-exploitation
+    verified: false            # ohchr.org blocked automated access (HTTP 403); wording seen only through search-result excerpts. TODO open by hand.
+    last_checked: 2026-10-11
+
+  # TODO (not found in a primary source, so deliberately left out — do not guess):
+  #   - who must pay the foreign worker levy and recruitment costs under current Malaysian rules / the Bangladesh–Malaysia MoU
+  #   - passport retention rule (Passports Act 1966) — the ILO review only documents the practice of withholding
+  #   - official complaint channel and phone number of the Department of Labour (JTKSM)

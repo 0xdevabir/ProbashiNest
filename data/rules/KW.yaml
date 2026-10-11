@@ -1,0 +1,69 @@
+# Kuwait — see data/README.md for the meaning of "verified".
+country: KW
+country_name_en: Kuwait
+country_name_bn: কুয়েত
+currency: KWD
+records:
+  - id: KW_MIN_WAGE
+    topic: minimum_wage
+    amount: 75
+    currency: KWD
+    excludes_domestic: false   # the factsheet gives 75 dinars, citing MD 14/2017 (private sector) and MD 22/2022 art. 27 (domestic workers)
+    text_en: The minimum wage is 75 Kuwaiti dinars a month (Ministerial Decision No. 14 of 2017 for private sector workers; Ministerial Decision No. 22/2022, article 27, for domestic workers).
+    text_bn: কুয়েতে সর্বনিম্ন বেতন মাসে ৭৫ দিনার।
+    source:
+      title: "ILO – Kuwait: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/kuwait-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: KW_RECRUITMENT_FEES
+    topic: recruitment_fees
+    text_en: For private sector workers, charging recruitment fees to workers is not explicitly prohibited. For domestic workers, neither the employer nor the recruitment agency can take reimbursement from the worker for recruitment, and agencies cannot charge extra amounts as "advance wages" (Ministerial Decision 22/2022, article 21).
+    text_bn: কুয়েতে গৃহকর্মীর কাছ থেকে মালিক বা এজেন্সি নিয়োগের খরচ ফেরত নিতে পারে না। অন্য কর্মীদের বেলায় আইনে পরিষ্কার নিষেধ নেই।
+    source:
+      title: "ILO – Kuwait: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/kuwait-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: KW_PASSPORT
+    topic: passport_retention
+    text_en: Employers are prohibited from confiscating workers' passports (Ministerial Decision No. 166 of 2007). An employer of a domestic worker may keep the passport only if the worker has consented.
+    text_bn: কুয়েতে মালিক কর্মীর পাসপোর্ট আটকে রাখতে পারে না। গৃহকর্মী নিজে রাজি হলে তবেই রাখতে পারে।
+    source:
+      title: "ILO – Kuwait: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/kuwait-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: KW_CONTRACT
+    topic: contract
+    text_en: A private sector contract can be verbal or written in Arabic; if written it is issued in three copies. A domestic worker's contract must be signed in the form set by the Public Authority of Manpower (PAM), in English and Arabic.
+    text_bn: কুয়েতে লিখিত চুক্তি হলে তিন কপি হয়। গৃহকর্মীর চুক্তি সরকারের (PAM) ঠিক করা ফরমে, আরবি আর ইংরেজিতে হতে হয়।
+    source:
+      title: "ILO – Kuwait: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/kuwait-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: KW_COMPLAINT
+    topic: complaint_channel
+    text_en: Workers lodge a dispute at a local office of the Public Authority of Manpower (PAM); domestic workers go to the PAM Domestic Workers' Department. Unresolved cases are referred to the court.
+    text_bn: সমস্যা হলে কুয়েতের শ্রম দপ্তরে (PAM) অভিযোগ করতে হয়। গৃহকর্মীদের জন্য আলাদা বিভাগ আছে।
+    source:
+      title: "ILO – Kuwait: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/kuwait-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: KW_BD_COST_CEILING
+    topic: bd_migration_cost_ceiling
+    amount_bdt: 106780
+    text_en: The Bangladesh government fixed the maximum migration cost for Kuwait at Tk 106,780 (as reported in April 2019). The current official figure has not been re-confirmed on a government page.
+    text_bn: বাংলাদেশ সরকার কুয়েতে যাওয়ার সর্বোচ্চ খরচ ১ লাখ ৬ হাজার ৭৮০ টাকা ঠিক করেছিল (২০১৯ সালের খবর)। এখনকার হার বিএমইটি থেকে জেনে নিতে হবে।
+    source:
+      title: "The Financial Express – Migration cost may go up as airfare, medical fees rise (10 April 2019)"
+      url: https://thefinancialexpress.com.bd/trade/migration-cost-may-go-up-as-airfare-medical-fees-rise-1554871594
+    verified: false         # news report from 2019; TODO confirm current ceiling with BMET / the ministry
+    last_checked: 2026-10-11

@@ -1,0 +1,13 @@
+{
+  "id": "real_vietnam_middleman_2lakh",
+  "note": "Md Rohmot paid about Tk 2 lakh to a middleman for a job in Vietnam; he was not sent and got no refund. Only facts stated in the report are filled in; everything else is left empty.",
+  "synthetic": false,
+  "source_url": "https://www.tbsnews.net/bangladesh/migration/rising-number-migrant-workers-falling-prey-fraudulence-669366",
+  "is_fraud": true,
+  "expected_level": "red",
+  "offer": {
+    "destination_country": "VN",
+    "fees_charged_bdt": 200000,
+    "confidence": 0.8
+  }
+}

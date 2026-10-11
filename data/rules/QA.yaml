@@ -1,0 +1,62 @@
+# Qatar — see data/README.md for the meaning of "verified".
+country: QA
+country_name_en: Qatar
+country_name_bn: কাতার
+currency: QAR
+records:
+  - id: QA_MIN_WAGE
+    topic: minimum_wage
+    amount: 1000
+    currency: QAR
+    excludes_domestic: false   # the Qatari minimum wage also covers domestic workers
+    text_en: The minimum wage for all workers, including domestic workers, is 1,000 riyals a month (Law No. 17 of 2020). If the employer does not provide housing and food, there is also a minimum housing allowance of 500 riyals and a food allowance of 300 riyals.
+    text_bn: কাতারে সব কর্মীর সর্বনিম্ন বেতন মাসে ১,০০০ রিয়াল। মালিক থাকা-খাওয়া না দিলে আরও ৫০০ রিয়াল বাসা ভাড়া আর ৩০০ রিয়াল খাবারের টাকা দিতে হয়।
+    source:
+      title: "ILO – Qatar: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/qatar-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: QA_RECRUITMENT_FEES
+    topic: recruitment_fees
+    text_en: Charging workers recruitment fees, expenses or any other costs is prohibited, and employers may not deduct them from pay. The standard contract for domestic workers says the agency or employer bears the recruitment fees from the home country.
+    text_bn: কাতারের আইনে কর্মীর কাছ থেকে নিয়োগের ফি বা খরচ নেওয়া নিষেধ। বেতন থেকেও কাটা যায় না।
+    source:
+      title: "ILO – Qatar: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/qatar-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: QA_PASSPORT
+    topic: passport_retention
+    text_en: It is illegal for employers to confiscate passports (Law No. 21 of 2015, article 33). A passport can be kept by the employer only with the worker's written consent.
+    text_bn: কাতারে মালিক কর্মীর পাসপোর্ট কেড়ে রাখতে পারে না। কর্মী লিখে রাজি হলে তবেই মালিক রাখতে পারে।
+    source:
+      title: "ILO – Qatar: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/qatar-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: QA_CONTRACT
+    topic: contract
+    text_en: Employment contracts must be authenticated by the Ministry of Labour through its electronic system, which produces a bilingual contract in Arabic and another language. Domestic workers get the Standard Unified Contract.
+    text_bn: কাতারে চাকরির চুক্তি শ্রম মন্ত্রণালয়ের অনলাইন সিস্টেমে সত্যায়িত হতে হয়। চুক্তি আরবি আর আরেকটি ভাষায় হয়।
+    source:
+      title: "ILO – Qatar: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/qatar-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: QA_COMPLAINT
+    topic: complaint_channel
+    text_en: Workers can submit a dispute to the Ministry of Labour for amicable settlement, including through the online Unified Platform for Complaints and Whistleblowers; unresolved cases go to the Labour Dispute Settlement Committee.
+    text_bn: সমস্যা হলে কাতারের শ্রম মন্ত্রণালয়ে অভিযোগ করা যায়। অনলাইনেও করা যায়।
+    source:
+      title: "ILO – Qatar: Regulatory framework governing migrant workers (updated December 2023)"
+      url: https://www.ilo.org/publications/qatar-regulatory-framework-governing-migrant-workers
+    verified: true
+    last_checked: 2026-10-11
+
+  # TODO: Bangladesh government migration cost ceiling for Qatar. A 2017 figure was
+  # seen only in a search-result summary and was not opened, so it is left out.
+  # Until a sourced figure is added, any non-zero fee for Qatar yields FEE_NOT_CHECKABLE (amber).

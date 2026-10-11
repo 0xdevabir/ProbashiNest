@@ -32,3 +32,26 @@ def evaluate(offer: ExtractedOffer) -> Verdict:
         helplines=[],
         disclaimer_bn="এটি পরীক্ষামূলক তথ্য। এটি আইনি পরামর্শ নয়।",
     )
+
+
+def guidance(offer: ExtractedOffer, verdict: Verdict):
+    """STUB guidance: one fixed follow-up question, no explanations (a stub has no sources)."""
+    from probashi.knowledge.guidance import Guidance, Prompt
+
+    ask = [
+        Prompt(
+            key="agency_license_no",
+            text_bn="এজেন্সির লাইসেন্স নম্বর কত? (পরীক্ষামূলক প্রশ্ন)",
+            text_en="What is the agency's licence number? (stub question)",
+        )
+    ]
+    return Guidance(
+        follow_up=ask if "agency_license_no" in offer.missing_fields else [], confidence=offer.confidence
+    )
+
+
+def guide(country):
+    """STUB guide: empty, because a stub must not invent rules or phone numbers."""
+    from probashi.knowledge.guidance import Guide
+
+    return Guide(country=(country or "").upper())

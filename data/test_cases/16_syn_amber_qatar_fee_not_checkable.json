@@ -1,0 +1,23 @@
+{
+  "id": "syn_amber_qatar_fee_not_checkable",
+  "note": "Licensed agency, but no sourced fee ceiling exists for Qatar, so a Tk 150,000 fee cannot be checked. The agency is real and licensed but did NOT make this offer; the offer is invented.",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": false,
+  "expected_level": "amber",
+  "offer": {
+    "employer_name": "Synthetic Facilities Co (invented)",
+    "job_title": "Cleaner",
+    "destination_country": "QA",
+    "agency_name": "1 Plus Overseas Limited",
+    "agency_license_no": "RL-1857",
+    "fees_charged_bdt": 150000,
+    "contract_duration_months": 24,
+    "visa_type": "Work visa",
+    "confidence": 0.9,
+    "monthly_salary": {
+      "amount": 1300,
+      "currency": "QAR"
+    }
+  }
+}

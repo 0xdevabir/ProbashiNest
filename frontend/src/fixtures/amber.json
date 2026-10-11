@@ -1,0 +1,56 @@
+{
+  "offer": {
+    "employer_name": "Sample Electronics Sdn Bhd (synthetic)",
+    "job_title": "Factory worker",
+    "destination_country": "MY",
+    "monthly_salary": { "amount": 1700, "currency": "MYR" },
+    "agency_name": "নমুনা ওভারসিজ লিমিটেড (কাল্পনিক)",
+    "agency_license_no": "RL-0000 (কাল্পনিক)",
+    "fees_charged_bdt": null,
+    "contract_duration_months": null,
+    "visa_type": null,
+    "document_language": "en",
+    "raw_text": "[SYNTHETIC DEMO DATA — not a real document] OFFER LETTER. Employer: Sample Electronics Sdn Bhd. Position: Factory worker. Basic salary: MYR 1,700 per month. Recruiting agent: Sample Overseas Limited, RL-0000.",
+    "missing_fields": ["fees_charged_bdt", "contract_duration_months", "visa_type"],
+    "confidence": 0.74
+  },
+  "verdict": {
+    "level": "amber",
+    "reasons": [
+      {
+        "code": "LICENSE_NOT_VERIFIED",
+        "message_bn": "লাইসেন্স নম্বর লেখা আছে। কিন্তু সরকারি তালিকার সাথে মিলিয়ে দেখা যায়নি।",
+        "message_en": "A licence number is written, but it could not be matched against the government list.",
+        "source": {
+          "title": "Overseas Employment Platform: recruiting agency list",
+          "url": "https://www.oep.gov.bd/agencies"
+        }
+      },
+      {
+        "code": "FEES_MISSING",
+        "message_bn": "মোট কত টাকা খরচ হবে, তা কাগজে লেখা নেই।",
+        "message_en": "The document does not say how much you will be charged in total.",
+        "source": null
+      },
+      {
+        "code": "DURATION_MISSING",
+        "message_bn": "চুক্তি কত দিনের এবং কোন ভিসা, তা লেখা নেই।",
+        "message_en": "The contract length and the visa type are not stated.",
+        "source": null
+      }
+    ],
+    "next_steps_bn": [
+      "টাকা দেওয়ার আগে লাইসেন্স নম্বরটি সরকারি তালিকায় মিলিয়ে দেখুন।",
+      "মোট খরচ লিখিতভাবে চান।",
+      "চুক্তির মেয়াদ ও ভিসার ধরন জেনে নিন।",
+      "বুঝতে সমস্যা হলে ১৬১৩৫ নম্বরে ফোন করুন।"
+    ],
+    "helplines": [
+      { "name": "প্রবাসবন্ধু কল সেন্টার (দেশ থেকে)", "phone": "16135" },
+      { "name": "প্রবাসবন্ধু কল সেন্টার (বিদেশ থেকে)", "phone": "+8809610102030" }
+    ],
+    "disclaimer_bn": "এটি একটি প্রাথমিক পরামর্শ, আইনি পরামর্শ নয়। চূড়ান্ত সিদ্ধান্তের আগে সরকারি অফিসে যাচাই করুন।"
+  },
+  "transcript_bn": null,
+  "audio_base64": null
+}

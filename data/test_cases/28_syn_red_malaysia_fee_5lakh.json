@@ -1,0 +1,22 @@
+{
+  "id": "syn_red_malaysia_fee_5lakh",
+  "note": "Tk 500,000 demanded for Malaysia (pattern: fees more than five times the official cost, reported by UN experts; source seen only via search excerpts). Offer details invented.",
+  "synthetic": true,
+  "source_url": "https://www.ohchr.org/en/press-releases/2025/11/malaysia-un-experts-sound-alarm-over-continued-systematic-exploitation",
+  "is_fraud": true,
+  "expected_level": "red",
+  "offer": {
+    "employer_name": "Synthetic Manufacturing Sdn Bhd (invented)",
+    "job_title": "Factory worker",
+    "destination_country": "MY",
+    "agency_name": "Synthetic KL Jobs Bureau (invented)",
+    "fees_charged_bdt": 500000,
+    "contract_duration_months": 36,
+    "visa_type": "Work visa",
+    "confidence": 0.9,
+    "monthly_salary": {
+      "amount": 1700,
+      "currency": "MYR"
+    }
+  }
+}

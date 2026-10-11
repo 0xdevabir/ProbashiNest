@@ -1,0 +1,14 @@
+{
+  "id": "real_saudi_broker_4lakh",
+  "note": "Worker paid a broker Tk 4 lakh for a promised pharmacy job in Saudi Arabia; got a cleaner job and a 3-month permit. No licensed agency. Only facts stated in the report are filled in; everything else is left empty.",
+  "synthetic": false,
+  "source_url": "https://en.bonikbarta.com/exclusive/s4zZ3Dm5hb54J4bA/",
+  "is_fraud": true,
+  "expected_level": "red",
+  "offer": {
+    "job_title": "Pharmacy worker",
+    "destination_country": "SA",
+    "fees_charged_bdt": 400000,
+    "confidence": 0.8
+  }
+}

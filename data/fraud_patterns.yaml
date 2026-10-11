@@ -1,0 +1,152 @@
+# Recruitment fraud red flags.
+#
+# code      – the Reason code the verdict engine raises for this pattern (null = the
+#             pattern cannot be detected from an offer; it is only used as background
+#             text for retrieval).
+# keywords  – only for patterns detected in the offer's raw text / transcript.
+# verified  – for a fraud pattern, true means: on last_checked the cited report was
+#             opened and the described pattern was read there. It says the pattern was
+#             REPORTED by that source; it is not a legal finding. See data/README.md.
+# Patterns with no source yet have source: null and verified: false — do not invent one.
+patterns:
+  - id: FP_FEE_FAR_ABOVE_LIMIT
+    code: FEE_ABOVE_LIMIT
+    title_en: Fee far above the government-fixed cost
+    text_en: Migrants routinely pay far more than the government-fixed migration cost. A Bangladesh Bureau of Statistics survey cited in the press found migrants spent 2.6 times the government-fixed amount for Saudi Arabia and 2.5 times for Malaysia. A demand far above the fixed cost is a warning sign.
+    text_bn: অনেক কর্মী সরকারের ঠিক করা খরচের চেয়ে অনেক বেশি টাকা দেন। সৌদি আরবের বেলায় প্রায় আড়াই গুণ। সরকারি খরচের চেয়ে অনেক বেশি টাকা চাইলে সাবধান হোন।
+    source:
+      title: "The Business Standard – Rising number of migrant workers falling prey to fraudulence (22 July 2023)"
+      url: https://www.tbsnews.net/bangladesh/migration/rising-number-migrant-workers-falling-prey-fraudulence-669366
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: FP_NO_LICENCE_MIDDLEMAN
+    code: MISSING_LICENCE_NO
+    title_en: No licence number – unlicensed middleman (dalal)
+    text_en: Many complaints to BMET are about middlemen who take money and then do not send the worker abroad or return the money. A real recruiting agency has a government recruiting licence (RL) number that can be checked in the BMET register.
+    text_bn: অনেক দালাল টাকা নিয়ে আর বিদেশে পাঠায় না। টাকাও ফেরত দেয় না। আসল এজেন্সির সরকারি লাইসেন্স নম্বর (আরএল নম্বর) থাকে। সেটা বিএমইটি-তে মিলিয়ে দেখা যায়।
+    source:
+      title: "The Business Standard – Rising number of migrant workers falling prey to fraudulence (22 July 2023)"
+      url: https://www.tbsnews.net/bangladesh/migration/rising-number-migrant-workers-falling-prey-fraudulence-669366
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: FP_AGENCY_LICENCE_CANCELLED
+    code: AGENCY_UNLICENSED
+    title_en: Agency whose licence is cancelled, suspended or expired
+    text_en: The expatriates' welfare ministry cancelled the licences of three recruiting agencies for fraudulently sending 30 young men to Russia, and urged everyone to verify the agency's legitimacy and the terms before any financial transaction.
+    text_bn: প্রতারণা করে রাশিয়ায় লোক পাঠানোর জন্য সরকার তিনটি এজেন্সির লাইসেন্স বাতিল করেছে। মন্ত্রণালয় বলেছে, টাকা দেওয়ার আগে এজেন্সি আসল কি না যাচাই করুন।
+    source:
+      title: "Prothom Alo English – licences of three recruiting agencies cancelled over fraudulently sending 30 youths to Russia (2 June 2026)"
+      url: https://en.prothomalo.com/bangladesh/pfydrq5l7w
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: FP_SALARY_TOO_GOOD
+    code: SALARY_UNREALISTIC
+    title_en: Salary far above what the job normally pays
+    text_en: In the Russia case, the victims were lured with promises of high salaries. A salary far above what the job normally pays is a common lure.
+    text_bn: রাশিয়ার ঘটনায় বেশি বেতনের লোভ দেখিয়ে লোক নেওয়া হয়েছিল। কাজের তুলনায় বেতন খুব বেশি বললে সাবধান হোন।
+    source:
+      title: "Prothom Alo English – licences of three recruiting agencies cancelled over fraudulently sending 30 youths to Russia (2 June 2026)"
+      url: https://en.prothomalo.com/bangladesh/pfydrq5l7w
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: FP_TOURIST_VISA_FOR_WORK_UAE
+    code: VISA_JOB_MISMATCH
+    title_en: Tourist or visit visa offered for a job
+    text_en: A fake recruitment firm brought 26 Bangladeshi job seekers to the UAE on tourist visas after taking large sums from them, and left them without food or shelter. A tourist or visit visa does not allow you to work.
+    text_bn: একটি ভুয়া কোম্পানি অনেক টাকা নিয়ে ২৬ জন বাংলাদেশিকে টুরিস্ট ভিসায় আমিরাতে নিয়েছিল। পরে তাঁরা খাবার আর থাকার জায়গা ছাড়া পড়ে ছিলেন। টুরিস্ট বা ভিজিট ভিসায় কাজ করা যায় না।
+    source:
+      title: "Khaleej Times – Scammers leave 26 job seekers without food, shelter in UAE (13 June 2018)"
+      url: https://www.khaleejtimes.com/uae/scammers-leave-26-job-seekers-without-food-shelter-in-uae
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: FP_VISIT_VISA_BLOCKED
+    code: VISA_JOB_MISMATCH
+    title_en: Going for work on a visit visa
+    text_en: Workers trying to go to Dubai for work on visit visas have been stopped at immigration; only genuine tourists are allowed to fly on visit visas.
+    text_bn: কাজের জন্য ভিজিট ভিসায় দুবাই যেতে গেলে বিমানবন্দরে আটকে দেওয়া হয়েছে। ভিজিট ভিসা শুধু বেড়াতে যাওয়ার জন্য।
+    source:
+      title: "The Daily Star – UAE visit visas: Only real tourists to fly (8 October 2021)"
+      url: https://www.thedailystar.net/nrb/migration/news/uae-visit-visas-only-real-tourists-fly-2193186
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: FP_FREE_VISA
+    code: FREE_VISA
+    title_en: '"Free visa" (no fixed employer)'
+    text_en: There is no such thing as a "free visa". Workers who go on one are listed under a sponsor in name only, have no guaranteed job, and risk arrest and deportation.
+    text_bn: আসলে "ফ্রি ভিসা" বলে কিছু নেই। এই ভিসায় গেলে কাজের কোনো নিশ্চয়তা থাকে না। পুলিশে ধরা পড়ে দেশে ফেরত আসার ঝুঁকি থাকে।
+    source:
+      title: "Dhaka Tribune – Inside the dangerous world of the Saudi 'free visa' (19 October 2020)"
+      url: https://www.dhakatribune.com/bangladesh/227247/inside-the-dangerous-world-of-the-saudi-free-visa
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: FP_FAKE_COMPANY
+    code: MISSING_EMPLOYER
+    title_en: Fake or unnamed employer
+    text_en: Fake job offers and fake companies are among the most common complaints; at least 200 Bangladeshis were reported recruited by fake companies in Malaysia. An offer that does not name a real employer cannot be checked.
+    text_bn: ভুয়া চাকরি আর ভুয়া কোম্পানির অভিযোগ খুব বেশি। মালয়েশিয়ায় অন্তত ২০০ জন ভুয়া কোম্পানির ফাঁদে পড়েছেন। কোম্পানির নাম না থাকলে চাকরি যাচাই করা যায় না।
+    source:
+      title: "The Business Standard – Rising number of migrant workers falling prey to fraudulence (22 July 2023)"
+      url: https://www.tbsnews.net/bangladesh/migration/rising-number-migrant-workers-falling-prey-fraudulence-669366
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: FP_PERSONAL_ACCOUNT_PAYMENT
+    code: PERSONAL_ACCOUNT_PAYMENT
+    title_en: Payment asked to a personal account or mobile wallet
+    keywords: ["personal account", "personal bkash", "personal number", "bkash", "nagad", "বিকাশ", "নগদে পাঠ", "নগদ নম্বর", "পার্সোনাল", "ব্যক্তিগত নম্বর", "ব্যক্তিগত অ্যাকাউন্ট", "ব্যক্তিগত একাউন্ট"]
+    text_en: Being asked to send the money to a person's own bank account or mobile wallet, instead of paying the agency against an official receipt, is a warning sign.
+    text_bn: এজেন্সির রসিদ ছাড়া কারও নিজের বিকাশ বা ব্যাংক অ্যাকাউন্টে টাকা পাঠাতে বললে সাবধান হোন।
+    source: null             # TODO: no report read yet that documents this pattern
+    verified: false
+    last_checked: 2026-10-11
+
+  - id: FP_PRESSURE_TO_PAY
+    code: PRESSURE_TO_PAY
+    title_en: Pressure to pay fast
+    keywords: ["pay today", "pay now", "pay immediately", "today only", "urgent payment", "last chance", "limited seats", "আজকেই টাকা", "আজই টাকা", "এখনই টাকা", "এক্ষুনি টাকা", "তাড়াতাড়ি টাকা", "দ্রুত টাকা", "শেষ সুযোগ", "সিট শেষ", "ভিসা শেষ হয়ে যাবে"]
+    text_en: Being pushed to pay immediately, before you can check the agency and the papers, is a warning sign.
+    text_bn: যাচাই করার সময় না দিয়ে তাড়াতাড়ি টাকা দিতে চাপ দিলে সাবধান হোন।
+    source: null             # TODO: no report read yet that documents this pattern
+    verified: false
+    last_checked: 2026-10-11
+
+  # --- background only (cannot be detected from an offer; used by the retriever) ---
+  - id: FP_JOB_SWITCH
+    code: null
+    title_en: Promised job and residence permit differ from what is delivered
+    text_en: A worker who paid a broker Tk 4 lakh was promised a pharmacy job in Saudi Arabia and a 15-month residence permit (iqama), but got work as a restaurant cleaner and a 3-month permit. Brokers bring people on short visas promising a longer permit later.
+    text_bn: এক কর্মী দালালকে ৪ লাখ টাকা দিয়েছিলেন। বলা হয়েছিল ফার্মেসিতে কাজ আর ১৫ মাসের আকামা। গিয়ে পেলেন রেস্টুরেন্টে পরিষ্কারের কাজ আর ৩ মাসের আকামা।
+    source:
+      title: "Bonik Barta English – report on Bangladeshi workers cheated by brokers in Saudi Arabia"
+      url: https://en.bonikbarta.com/exclusive/s4zZ3Dm5hb54J4bA/
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: FP_NO_CONTRACT_BEFORE_DEPARTURE
+    code: null
+    title_en: No job contract given before departure
+    text_en: In a study by the migrant rights group OKUP, 75% of the migrants who filed complaints had received no job contract before migrating, and 47% received no work permit after arriving.
+    text_bn: একটি গবেষণায় দেখা গেছে, অভিযোগ করা কর্মীদের ৭৫ ভাগ যাওয়ার আগে চাকরির চুক্তি হাতে পাননি। যাওয়ার আগে লিখিত চুক্তি চেয়ে নিন।
+    source:
+      title: "The Business Standard – False promises abroad, no justice at home: new study sheds light on migrants' perils (9 July 2025)"
+      url: https://www.tbsnews.net/bangladesh/migration/false-promises-abroad-no-justice-home-new-study-sheds-light-migrants-perils
+    verified: true
+    last_checked: 2026-10-11
+
+  - id: FP_MALAYSIA_FAKE_JOBS
+    code: null
+    title_en: Malaysia – fake companies and fees many times the official cost
+    text_en: UN human rights experts reported that Bangladeshi workers arriving in Malaysia found the promised jobs did not exist, and had paid recruitment fees reportedly more than five times the official fee.
+    text_bn: জাতিসংঘের বিশেষজ্ঞরা বলেছেন, মালয়েশিয়ায় গিয়ে অনেক বাংলাদেশি দেখেছেন কাজ নেই। তাঁরা সরকারি খরচের পাঁচ গুণের বেশি টাকা দিয়েছিলেন।
+    source:
+      title: "OHCHR – Malaysia: UN experts sound alarm over continued systematic exploitation of Bangladeshi migrant workers (November 2025)"
+      url: https://www.ohchr.org/en/press-releases/2025/11/malaysia-un-experts-sound-alarm-over-continued-systematic-exploitation
+    verified: false          # ohchr.org returned HTTP 403; seen only through search-result excerpts
+    last_checked: 2026-10-11

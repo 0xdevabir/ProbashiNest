@@ -1,0 +1,254 @@
+{
+  "_note": "SYNTHETIC test data. Nothing here is real.",
+  "fixtures": [
+    {
+      "file": "01_en_offer_clean.png",
+      "case": "clean English offer letter, every field present",
+      "expected": {
+        "employer_name": [
+          "Sample Cleaning Services Co."
+        ],
+        "job_title": [
+          "cleaner"
+        ],
+        "destination_country": "SA",
+        "salary_amount": 1200,
+        "salary_currency": "SAR",
+        "agency_name": [
+          "Sample Overseas Ltd."
+        ],
+        "agency_license_no": "RL-99991",
+        "fees_charged_bdt": 165000,
+        "contract_duration_months": 24,
+        "visa_type": "work",
+        "document_language": [
+          "en"
+        ]
+      }
+    },
+    {
+      "file": "02_en_offer_no_licence.png",
+      "case": "agency named but no licence number anywhere",
+      "expected": {
+        "employer_name": [
+          "Example Security Services LLC"
+        ],
+        "job_title": [
+          "security guard",
+          "guard"
+        ],
+        "destination_country": "AE",
+        "salary_amount": 1500,
+        "salary_currency": "AED",
+        "agency_name": [
+          "Example Manpower Services"
+        ],
+        "agency_license_no": null,
+        "fees_charged_bdt": 420000,
+        "contract_duration_months": 24,
+        "visa_type": "work",
+        "document_language": [
+          "en"
+        ]
+      }
+    },
+    {
+      "file": "03_en_contract_malaysia_myr.png",
+      "case": "salary in ringgit, fee in words (lakh), 'Visit Pass (Temporary Employment)'",
+      "expected": {
+        "employer_name": [
+          "Contoh Sample Manufacturing Sdn. Bhd."
+        ],
+        "job_title": [
+          "factory worker",
+          "production operator"
+        ],
+        "destination_country": "MY",
+        "salary_amount": 1700,
+        "salary_currency": "MYR",
+        "agency_name": [
+          "Namuna International"
+        ],
+        "agency_license_no": "RL-99992",
+        "fees_charged_bdt": 380000,
+        "contract_duration_months": 36,
+        "visa_type": "work",
+        "document_language": [
+          "en"
+        ]
+      }
+    },
+    {
+      "file": "04_ar_only_offer.png",
+      "case": "Arabic-only document, Arabic-Indic digits, no agency or fee",
+      "expected": {
+        "employer_name": [
+          "شركة النموذج للنظافة",
+          "النموذج للنظافة"
+        ],
+        "job_title": [
+          "cleaner",
+          "cleaning worker"
+        ],
+        "destination_country": "SA",
+        "salary_amount": 1500,
+        "salary_currency": "SAR",
+        "agency_name": null,
+        "agency_license_no": null,
+        "fees_charged_bdt": null,
+        "contract_duration_months": 24,
+        "visa_type": "work",
+        "document_language": [
+          "ar"
+        ]
+      }
+    },
+    {
+      "file": "05_en_offer_rotated_photo.jpg",
+      "case": "phone photo turned 90 degrees with no EXIF, skewed, uneven light",
+      "expected": {
+        "employer_name": [
+          "Demo Transport W.L.L."
+        ],
+        "job_title": [
+          "light vehicle driver",
+          "driver"
+        ],
+        "destination_country": "QA",
+        "salary_amount": 1800,
+        "salary_currency": "QAR",
+        "agency_name": [
+          "Specimen Recruiting Agency"
+        ],
+        "agency_license_no": "RL-99993",
+        "fees_charged_bdt": 250000,
+        "contract_duration_months": 24,
+        "visa_type": "work",
+        "document_language": [
+          "en"
+        ]
+      }
+    },
+    {
+      "file": "06_en_form_handwritten_amounts.png",
+      "case": "printed form, handwritten-style values, fee in words, licence left blank",
+      "expected": {
+        "employer_name": [
+          "Sample Builders LLC"
+        ],
+        "job_title": [
+          "mason"
+        ],
+        "destination_country": "OM",
+        "salary_amount": 140,
+        "salary_currency": "OMR",
+        "agency_name": [
+          "Test Travels & Overseas"
+        ],
+        "agency_license_no": null,
+        "fees_charged_bdt": 450000,
+        "contract_duration_months": 24,
+        "visa_type": null,
+        "document_language": [
+          "en"
+        ]
+      }
+    },
+    {
+      "file": "07_bn_agency_receipt.png",
+      "case": "Bangla receipt, Bangla digits, fee in lakh/hazar, no employer or visa type",
+      "expected": {
+        "employer_name": null,
+        "job_title": [
+          "driver"
+        ],
+        "destination_country": "KW",
+        "salary_amount": 120,
+        "salary_currency": "KWD",
+        "agency_name": [
+          "নমুনা ইন্টারন্যাশনাল",
+          "Namuna International"
+        ],
+        "agency_license_no": "RL-99994",
+        "fees_charged_bdt": 380000,
+        "contract_duration_months": 24,
+        "visa_type": null,
+        "document_language": [
+          "bn"
+        ]
+      }
+    },
+    {
+      "file": "08_ar_en_visit_visa.png",
+      "case": "bilingual VISIT visa: no job, salary or agency; stay length is not a contract",
+      "expected": {
+        "employer_name": null,
+        "job_title": null,
+        "destination_country": "AE",
+        "salary_amount": null,
+        "salary_currency": null,
+        "agency_name": null,
+        "agency_license_no": null,
+        "fees_charged_bdt": null,
+        "contract_duration_months": null,
+        "visa_type": "visit",
+        "document_language": [
+          "en",
+          "ar"
+        ]
+      }
+    },
+    {
+      "file": "09_en_offer_blurry.jpg",
+      "case": "small, blurry, heavily compressed photo; ambiguous 'BD' currency",
+      "expected": {
+        "employer_name": [
+          "Mock Hospitality W.L.L."
+        ],
+        "job_title": [
+          "kitchen helper"
+        ],
+        "destination_country": "BH",
+        "salary_amount": 110,
+        "salary_currency": "BHD",
+        "agency_name": [
+          "Sample Overseas Ltd."
+        ],
+        "agency_license_no": "RL-99991",
+        "fees_charged_bdt": 300000,
+        "contract_duration_months": 24,
+        "visa_type": "work",
+        "document_language": [
+          "en"
+        ]
+      }
+    },
+    {
+      "file": "10_en_offer_two_pages.pdf",
+      "case": "two-page PDF: job on page 1, agency and fee on page 2",
+      "expected": {
+        "employer_name": [
+          "Sample Garments Co."
+        ],
+        "job_title": [
+          "sewing machine operator",
+          "machine operator",
+          "garment worker"
+        ],
+        "destination_country": "JO",
+        "salary_amount": 220,
+        "salary_currency": "JOD",
+        "agency_name": [
+          "Example Manpower Services"
+        ],
+        "agency_license_no": "RL-99995",
+        "fees_charged_bdt": 95000,
+        "contract_duration_months": 36,
+        "visa_type": "work",
+        "document_language": [
+          "en"
+        ]
+      }
+    }
+  ]
+}

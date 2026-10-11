@@ -1,0 +1,13 @@
+{
+  "id": "real_russia_name_only",
+  "note": "Third agency in the Russia case (RL-1755), given by name only, as a worker would say it. Only facts stated in the report are filled in; everything else is left empty.",
+  "synthetic": false,
+  "source_url": "https://en.prothomalo.com/bangladesh/pfydrq5l7w",
+  "is_fraud": true,
+  "expected_level": "red",
+  "offer": {
+    "destination_country": "RU",
+    "agency_name": "T S Overseas Ltd",
+    "confidence": 0.8
+  }
+}

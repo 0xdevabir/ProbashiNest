@@ -1,0 +1,23 @@
+{
+  "id": "syn_amber_fee_within_unverified_ceiling",
+  "note": "Everything checks out but a Tk 100,000 fee can only be compared with an unverified 2019 ceiling, so it is not confirmed. The agency is real and licensed but did NOT make this offer; the offer is invented.",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": false,
+  "expected_level": "amber",
+  "offer": {
+    "employer_name": "Synthetic Facilities Co (invented)",
+    "job_title": "Cleaner",
+    "destination_country": "SA",
+    "agency_name": "1 Plus Overseas Limited",
+    "agency_license_no": "RL-1857",
+    "fees_charged_bdt": 100000,
+    "contract_duration_months": 24,
+    "visa_type": "Work visa",
+    "confidence": 0.9,
+    "monthly_salary": {
+      "amount": 1500,
+      "currency": "SAR"
+    }
+  }
+}

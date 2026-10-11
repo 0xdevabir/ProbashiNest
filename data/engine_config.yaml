@@ -1,0 +1,138 @@
+# Verdict-engine thresholds and keyword lists.
+# These are DESIGN CHOICES of this project, not legal facts — they have no source.
+# Change them here; the code reads this file.
+
+# The agency register copy must be at most this old for a licence to count as
+# verified. An older copy can no longer support a green verdict.
+register_max_age_days: 180
+
+# Extraction confidence below this is treated as "we could not read the offer well".
+low_confidence_below: 0.5
+
+# A fee above the government ceiling is a warning. It becomes a high-severity flag
+# when the ceiling record is verified, or when the fee is at least this many times
+# the ceiling (so an out-of-date ceiling cannot explain the gap).
+fee_gross_multiple: 3
+
+# SALARY_UNREALISTIC: a low-skilled job offered at more than this many times the
+# destination's legal minimum wage. Only applies where a minimum wage exists.
+salary_unrealistic_multiple: 4
+
+# How similar (0-1) the offer's agency name must be to the registered name.
+agency_name_match_ratio: 0.85
+
+low_skilled_job_keywords:
+  - cleaner
+  - cleaning
+  - labour
+  - labor
+  - helper
+  - housemaid
+  - maid
+  - domestic
+  - janitor
+  - loader
+  - porter
+  - farm
+  - gardener
+  - dishwasher
+  - ক্লিনার
+  - পরিষ্কার
+  - শ্রমিক
+  - লেবার
+  - হেলপার
+  - গৃহকর্মী
+  - মালি
+
+domestic_job_keywords:
+  - domestic
+  - housemaid
+  - maid
+  - house driver
+  - house boy
+  - houseboy
+  - nanny
+  - khadama
+  - গৃহকর্মী
+  - বাসার কাজ
+  - খাদ্দামা
+  - হাউস ড্রাইভার
+
+# Visa types that do not allow employment.
+non_work_visa_keywords:
+  - tourist
+  - visit
+  - visitor
+  - umrah
+  - hajj
+  - student
+  - transit
+  - টুরিস্ট
+  - ট্যুরিস্ট
+  - ভিজিট
+  - ভ্রমণ
+  - ওমরাহ
+  - ওমরা
+  - হজ ভিসা
+  - হজ্জ
+  - স্টুডেন্ট
+  - ট্রানজিট
+
+free_visa_keywords:
+  - free visa
+  - freevisa
+  - azad visa
+  - ফ্রি ভিসা
+  - ফ্রী ভিসা
+  - আজাদ ভিসা
+
+domestic_visa_keywords:
+  - domestic
+  - housemaid
+  - house driver
+  - khadama
+  - গৃহকর্মী
+  - খাদ্দামা
+
+# --- Contract clause scanner (words looked for in the document text or transcript) ---
+# A hit only raises a warning (amber), never red: a keyword cannot tell
+# "the employer will keep" from "the employer will not keep".
+
+# The paper talks about the employer keeping the worker's passport.
+passport_kept_keywords:
+  - passport will be kept
+  - passport shall be kept
+  - passport will be held
+  - passport shall be held
+  - keep the passport
+  - keep your passport
+  - hold the passport
+  - hold your passport
+  - retain the passport
+  - retain your passport
+  - পাসপোর্ট মালিকের কাছে
+  - পাসপোর্ট কোম্পানির কাছে
+  - পাসপোর্ট কফিলের কাছে
+  - পাসপোর্ট জমা
+
+# The paper talks about money being cut from the salary.
+salary_deduction_keywords:
+  - deducted from salary
+  - deducted from your salary
+  - deducted from the salary
+  - deduct from salary
+  - deduct from your salary
+  - salary deduction
+  - বেতন থেকে কাটা
+  - বেতন থেকে কেটে
+  - বেতন কেটে
+
+# The job is not named.
+vague_job_keywords:
+  - any work
+  - any job
+  - any kind of work
+  - যেকোনো কাজ
+  - যে কোনো কাজ
+  - যেকোন কাজ
+  - যে কোন কাজ

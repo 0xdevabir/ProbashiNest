@@ -1,0 +1,62 @@
+{
+  "offer": {
+    "employer_name": null,
+    "job_title": "ক্লিনার",
+    "destination_country": "SA",
+    "monthly_salary": { "amount": 1200, "currency": "SAR" },
+    "agency_name": null,
+    "agency_license_no": null,
+    "fees_charged_bdt": 600000,
+    "contract_duration_months": null,
+    "visa_type": "ভিজিট ভিসা",
+    "document_language": "bn",
+    "raw_text": "[SYNTHETIC DEMO DATA — নমুনা তথ্য, আসল নয়] সৌদি আরবে ক্লিনারের চাকরি। বেতন মাসে ১২০০ রিয়াল। এজেন্ট ৬ লাখ টাকা নগদ চাইছে। রসিদ দেবে না। লাইসেন্স দেখায়নি। ভিজিট ভিসায় নিয়ে যাবে বলছে।",
+    "missing_fields": ["employer_name", "agency_name", "agency_license_no", "contract_duration_months"],
+    "confidence": 0.82
+  },
+  "verdict": {
+    "level": "red",
+    "reasons": [
+      {
+        "code": "AGENCY_LICENSE_MISSING",
+        "message_bn": "এজেন্সির নাম বা লাইসেন্স নম্বর পাওয়া যায়নি। তাই এজেন্সিটি যাচাই করা যায়নি।",
+        "message_en": "No agency name or licence number was found, so the agency could not be verified.",
+        "source": {
+          "title": "Overseas Employment Platform: recruiting agency list",
+          "url": "https://www.oep.gov.bd/agencies"
+        }
+      },
+      {
+        "code": "VISIT_VISA_FOR_WORK",
+        "message_bn": "কাজের ভিসার বদলে ভিজিট ভিসা দেওয়া হচ্ছে। এটি প্রতারণার একটি পরিচিত লক্ষণ।",
+        "message_en": "A visit visa is offered instead of a work visa. This is a known warning sign of fraud.",
+        "source": { "title": "TODO: unverified. Source to be supplied by the knowledge module.", "url": null }
+      },
+      {
+        "code": "CASH_WITHOUT_RECEIPT",
+        "message_bn": "এজেন্ট রসিদ ছাড়া নগদ ৬ লাখ টাকা চাইছে।",
+        "message_en": "The agent is asking for 600,000 taka in cash with no receipt.",
+        "source": null
+      },
+      {
+        "code": "NO_WRITTEN_CONTRACT",
+        "message_bn": "নিয়োগকর্তার নাম ও চুক্তির মেয়াদ জানানো হয়নি।",
+        "message_en": "The employer's name and the contract length were not given.",
+        "source": null
+      }
+    ],
+    "next_steps_bn": [
+      "এখনই কোনো টাকা দেবেন না।",
+      "এজেন্সির লাইসেন্স নম্বর চান। সরকারি তালিকায় মিলিয়ে দেখুন।",
+      "লিখিত চুক্তি ও কাজের ভিসা ছাড়া রাজি হবেন না।",
+      "প্রবাসবন্ধু কল সেন্টারে ১৬১৩৫ নম্বরে ফোন করুন।"
+    ],
+    "helplines": [
+      { "name": "প্রবাসবন্ধু কল সেন্টার (দেশ থেকে)", "phone": "16135" },
+      { "name": "প্রবাসবন্ধু কল সেন্টার (বিদেশ থেকে)", "phone": "+8809610102030" }
+    ],
+    "disclaimer_bn": "এটি একটি প্রাথমিক পরামর্শ, আইনি পরামর্শ নয়। চূড়ান্ত সিদ্ধান্তের আগে সরকারি অফিসে যাচাই করুন।"
+  },
+  "transcript_bn": "সৌদি আরবে ক্লিনারের চাকরি। বেতন মাসে ১২০০ রিয়াল। এজেন্ট ৬ লাখ টাকা নগদ চাইছে। রসিদ দেবে না। লাইসেন্স দেখায়নি। ভিজিট ভিসায় নিয়ে যাবে বলছে।",
+  "audio_base64": null
+}

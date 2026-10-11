@@ -1,0 +1,23 @@
+{
+  "id": "syn_green_malaysia_factory",
+  "note": "Complete offer at exactly the Malaysian minimum wage, no fee. The agency is real and licensed but did NOT make this offer; the offer is invented.",
+  "synthetic": true,
+  "source_url": null,
+  "is_fraud": false,
+  "expected_level": "green",
+  "offer": {
+    "employer_name": "Synthetic Plastics Sdn Bhd (invented)",
+    "job_title": "Factory worker",
+    "destination_country": "MY",
+    "agency_name": "1 Plus Overseas Ltd",
+    "agency_license_no": "RL1857",
+    "fees_charged_bdt": 0,
+    "contract_duration_months": 36,
+    "visa_type": "Employment visa",
+    "confidence": 0.9,
+    "monthly_salary": {
+      "amount": 1700,
+      "currency": "MYR"
+    }
+  }
+}
