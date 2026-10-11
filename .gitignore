@@ -1,0 +1,34 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Vector stores and caches
+.chroma/
+*.faiss
+.cache/
+
+# Never commit user uploads or recordings
+uploads/
+recordings/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
