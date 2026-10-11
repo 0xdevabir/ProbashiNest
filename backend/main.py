@@ -4,6 +4,7 @@ Run locally:  uvicorn backend.main:app --reload
 """
 from __future__ import annotations
 
+import hmac
 import logging
 from typing import Optional
 
@@ -21,7 +22,7 @@ from backend.deps import Modules, build_modules, get_modules
 from backend.logging_utils import configure_logging
 from backend.models import CheckResult, ReportIn
 from backend.pipeline import MAX_DOCUMENTS, run_check
-from backend.ratelimit import RateLimiter, RateLimitMiddleware
+from backend.ratelimit import RateLimiter, RateLimitMiddleware, client_key
 from backend.stats import STATS
 from probashi.knowledge.guidance import Guide
 
@@ -205,6 +206,36 @@ def create_app(settings: Optional[Settings] = None, modules: Optional[Modules] =
         STATS.record_report()
         log.info("report_saved", extra={"verdict_level": body.level.value, "reason_codes": body.reason_codes})
         return {"saved": True}
+
+    @app.get("/api/eval")
+    def evaluation(modules: Modules = Depends(get_modules)):
+        """How the verdict engine does on the labelled test cases. `fraud_green` must be 0."""
+        if modules.evaluation is None:
+            raise errors.eval_unavailable()
+        try:
+            return modules.evaluation()
+        except Exception:
+            log.exception("stage_failed", extra={"stage": "evaluation"})
+            raise errors.eval_unavailable() from None
+
+    @app.get("/api/admin/reports")
+    def review(request: Request):
+        """The stored scam reports, for a human reviewer. Off until ADMIN_TOKEN and REPORTS_PATH are set."""
+        if not (settings.admin_token and settings.reports_path):
+            raise errors.not_found()
+        # Limits guessing of the token as well as honest use.
+        wait = limiter.check("admin:" + client_key(request.scope, settings.trust_proxy))
+        if wait:
+            raise errors.rate_limited(wait)
+        sent = request.headers.get("authorization", "")
+        if not hmac.compare_digest(sent.encode(), f"Bearer {settings.admin_token}".encode()):
+            log.warning("review_refused")
+            raise errors.unauthorized()
+        try:
+            return reports.review_queue(reports.read_reports(settings.reports_path))
+        except OSError:
+            log.exception("reports_not_read")
+            raise errors.reporting_off() from None
 
     app.include_router(bots.build_router(settings, limiter))
     return app

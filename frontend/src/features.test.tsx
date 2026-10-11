@@ -229,3 +229,61 @@ describe('helpers', () => {
     expect(wageSummary(entries)).toEqual({ promised: 2000, received: 2000, shortfall: 200 })
   })
 })
+
+describe('evaluation and review', () => {
+  // SYNTHETIC numbers and names, made up for these tests.
+  const STATS = { since: '2026-01-05T00:00:00Z', checks: 4, by_level: { red: 1, amber: 3, green: 0 }, by_channel: {}, by_country: {}, top_reasons: [], reports: 0 }
+  const EVALUATION = { as_of: '2026-01-05', total: 10, correct: 9, real: 4, synthetic: 6, fraud_total: 7, fraud_green: 0, fraud_red: 5, misses: [] }
+
+  it('shows how many fraud offers the checker called safe', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockImplementation(async (url: string) => json(url.endsWith('/api/eval') ? EVALUATION : STATS)))
+    const user = userEvent.setup()
+    renderApp()
+
+    await user.click(screen.getByRole('button', { name: /আরও সাহায্য/ }))
+    await user.click(await screen.findByRole('button', { name: /মোট হিসাব/ }))
+
+    const safe = (await screen.findByText('প্রতারণার অফারকে নিরাপদ বলেছে')).parentElement!
+    expect(within(safe).getByText('০ / ৭')).toBeInTheDocument()
+    expect(screen.getByText('৯ / ১০')).toBeInTheDocument()
+    expect(screen.getByText(/৪ আসল খবর থেকে, ৬ বানানো নমুনা/)).toBeInTheDocument()
+  })
+
+  it('still shows the totals when the server has no evaluation', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockImplementation(async (url: string) => (url.endsWith('/api/eval') ? json({}, 503) : json(STATS))))
+    const user = userEvent.setup()
+    renderApp()
+
+    await user.click(screen.getByRole('button', { name: /আরও সাহায্য/ }))
+    await user.click(await screen.findByRole('button', { name: /মোট হিসাব/ }))
+
+    expect(await screen.findByText('এই সার্ভারে পরীক্ষার ফল নেই।')).toBeInTheDocument()
+    expect(screen.getByText('মোট যাচাই')).toBeInTheDocument()
+  })
+
+  it('shows stored reports to a reviewer with the token, and nothing without it', async () => {
+    const queue = {
+      total: 2,
+      agencies: [{ agency_name: 'SYNTHETIC Agency', agency_license_no: 'RL-0000', count: 2, last_date: '2026-01-05' }],
+      reports: [{ date: '2026-01-05', level: 'red', reason_codes: ['FREE_VISA'], destination_country: 'SA', agency_name: 'SYNTHETIC Agency', agency_license_no: 'RL-0000' }],
+    }
+    const fetchMock = vi.fn().mockResolvedValueOnce(json({}, 401)).mockResolvedValueOnce(json(queue))
+    vi.stubGlobal('fetch', fetchMock)
+    history.replaceState(null, '', '#review') // as when the page is opened at that address
+    const user = userEvent.setup()
+    renderApp()
+
+    await user.type(await screen.findByLabelText('যাচাইকারীর টোকেন'), 'synthetic-token')
+    await user.click(screen.getByRole('button', { name: 'খবর দেখান' }))
+    expect(await screen.findByRole('alert')).toHaveTextContent('টোকেন ঠিক আছে কি না দেখুন')
+
+    await user.click(screen.getByRole('button', { name: 'খবর দেখান' }))
+    expect(await screen.findByText('২ বার')).toBeInTheDocument()
+    expect(screen.getByText('FREE_VISA')).toBeInTheDocument()
+    const [url, init] = calls(fetchMock)[1]
+    expect(url).toMatch(/\/api\/admin\/reports$/)
+    expect(init.headers).toEqual({ Authorization: 'Bearer synthetic-token' })
+    expect(JSON.stringify({ ...localStorage })).not.toContain('synthetic-token')
+    history.replaceState(null, '', location.pathname)
+  })
+})

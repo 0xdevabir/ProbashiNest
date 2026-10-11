@@ -143,5 +143,18 @@ def guide_unavailable() -> ApiError:
     )
 
 
+def eval_unavailable() -> ApiError:
+    return ApiError(
+        503,
+        "EVAL_UNAVAILABLE",
+        "এখন এই হিসাব দেখানো যাচ্ছে না। একটু পরে আবার চেষ্টা করুন।",
+        "The evaluation could not be run on this server.",
+    )
+
+
+def unauthorized() -> ApiError:
+    return ApiError(401, "UNAUTHORIZED", "এই পাতা দেখার অনুমতি নেই।", "Missing or wrong reviewer token.")
+
+
 def not_found() -> ApiError:
     return ApiError(404, "NOT_FOUND", "এটা পাওয়া যায়নি।", "Not found.")

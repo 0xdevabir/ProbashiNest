@@ -1,4 +1,4 @@
-import { LEVELS, type CheckResult, type Guide, type ScamReport, type Stats } from './types'
+import { LEVELS, type CheckResult, type Evaluation, type Guide, type ReviewQueue, type ScamReport, type Stats } from './types'
 
 export type ApiErrorKind = 'offline' | 'timeout' | 'server' | 'bad_request' | 'busy' | 'invalid'
 
@@ -122,4 +122,24 @@ export async function sendReport(report: ScamReport): Promise<void> {
     { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(report) },
     SHORT_TIMEOUT_MS,
   )
+}
+
+/** The engine's score on the labelled test cases, most importantly how many fraud cases it called safe. */
+export async function fetchEvaluation(signal?: AbortSignal): Promise<Evaluation> {
+  const res = await request('/api/eval', { method: 'GET' }, SHORT_TIMEOUT_MS, signal)
+  return json<Evaluation>(
+    res,
+    (data) => isObject(data) && typeof data.fraud_green === 'number' && typeof data.total === 'number' && Array.isArray(data.misses),
+  )
+}
+
+/** Stored scam reports, for review staff. The token is sent once and never kept. */
+export async function fetchReviewQueue(token: string, signal?: AbortSignal): Promise<ReviewQueue> {
+  const res = await request(
+    '/api/admin/reports',
+    { method: 'GET', headers: { Authorization: `Bearer ${token}` } },
+    SHORT_TIMEOUT_MS,
+    signal,
+  )
+  return json<ReviewQueue>(res, (data) => isObject(data) && Array.isArray(data.agencies) && Array.isArray(data.reports))
 }

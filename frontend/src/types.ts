@@ -125,3 +125,33 @@ export interface ScamReport {
   agency_name?: string
   agency_license_no?: string
 }
+
+/** How the verdict engine does on the labelled test cases (GET /api/eval). */
+export interface Evaluation {
+  as_of: string
+  total: number
+  correct: number
+  real: number
+  synthetic: number
+  fraud_total: number
+  /** Fraud cases the engine called safe. The target is 0. */
+  fraud_green: number
+  fraud_red: number
+  misses: { id: string; expected: Level; got: Level; is_fraud: boolean }[]
+}
+
+export interface StoredReport {
+  date: string
+  level: Level
+  reason_codes: string[]
+  destination_country: string | null
+  agency_name: string | null
+  agency_license_no: string | null
+}
+
+/** Stored scam reports for a human reviewer (GET /api/admin/reports). */
+export interface ReviewQueue {
+  total: number
+  agencies: { agency_name: string | null; agency_license_no: string | null; count: number; last_date: string }[]
+  reports: StoredReport[]
+}

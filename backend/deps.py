@@ -18,6 +18,8 @@ class Modules:
     # Optional extras from the knowledge module. None = the API answers without them.
     guidance: Optional[Callable[[ExtractedOffer, Verdict], Any]] = None
     guide: Optional[Callable[[Optional[str]], Any]] = None
+    # Runs the engine over the labelled test cases. None when the engine is a stub: a stub has no quality to measure.
+    evaluation: Optional[Callable[[], dict]] = None
 
 
 def build_modules(stubs: frozenset[str] = frozenset()) -> Modules:
@@ -29,9 +31,12 @@ def build_modules(stubs: frozenset[str] = frozenset()) -> Modules:
     if "knowledge" in stubs:
         from backend.stubs import knowledge
         from backend.stubs import knowledge as guidance
+
+        evaluation = None
     else:
         from probashi import knowledge
         from probashi.knowledge import guidance
+        from backend.quality import evaluation
     if "voice" in stubs:
         from backend.stubs import voice
     else:
@@ -43,6 +48,7 @@ def build_modules(stubs: frozenset[str] = frozenset()) -> Modules:
         synthesize_bn=voice.synthesize_bn,
         guidance=guidance.guidance,
         guide=guidance.guide,
+        evaluation=evaluation,
     )
 
 

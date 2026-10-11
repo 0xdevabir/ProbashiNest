@@ -21,14 +21,15 @@ const Wages = lazy(() => import('./screens/Wages'))
 const Sos = lazy(() => import('./screens/Sos'))
 const Helper = lazy(() => import('./screens/Helper'))
 const StatsScreen = lazy(() => import('./screens/StatsScreen'))
+const Review = lazy(() => import('./screens/Review'))
 const DemoMenu = lazy(() => import('./components/DemoMenu'))
 
-type Screen = 'home' | 'type' | 'privacy' | 'consent' | 'loading' | 'result' | 'error' | 'more' | Tool
+type Screen = 'home' | 'type' | 'privacy' | 'consent' | 'loading' | 'result' | 'error' | 'more' | 'review' | Tool
 
 const IN_APP = { inApp: true }
 
 export default function App() {
-  const [screen, setScreen] = useState<Screen>('home')
+  const [screen, setScreen] = useState<Screen>(() => (location.hash === '#review' ? 'review' : 'home'))
   const [result, setResult] = useState<{ response: CheckResult; isDemo: boolean; input: CheckInput } | null>(null)
   const [errorKind, setErrorKind] = useState<ApiErrorKind>('offline')
   const [demoBuild] = useState(isDemoBuild)
@@ -162,6 +163,7 @@ export default function App() {
         {screen === 'sos' && <Sos onBack={toMore} />}
         {screen === 'helper' && <Helper onBack={toMore} />}
         {screen === 'stats' && <StatsScreen onBack={toMore} />}
+        {screen === 'review' && <Review onBack={() => setScreen('home')} />}
         {demoMenuOpen && (
           <DemoMenu choice={demoChoice} onChoose={setDemoChoice} onClose={() => setDemoMenuOpen(false)} />
         )}

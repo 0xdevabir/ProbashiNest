@@ -107,6 +107,8 @@ Behaviour worth knowing:
 | Emergency help | "More help" | Call a trusted contact, send the location by SMS or another app, official numbers for the chosen country. |
 | Helper mode | "More help" | For people who check offers for others: counts red, amber and green on the phone, nothing else. |
 | Totals | "More help" | The server's `/api/stats`: checks, verdicts, destinations, most common reason codes. |
+| Checker accuracy | "More help" → Totals | The server's `/api/eval`: how many known fraud offers the engine called safe (target 0), how many it called red, and correct answers, with the split of real and made-up test cases. |
+| Review queue | open the app at `#review` | For review staff, not linked from the app. Asks for the reviewer token, then lists the newest scam reports and the agencies named more than once. The token is held in memory only. |
 | Low-data mode | automatic, or the switch in "More help" | On when the phone reports data saver or 2G. Photos are compressed to 600 KB and the server sends no audio; the phone's own Bangla voice reads the answer if it has one. |
 | Offline retry | error screen | A check that failed without a connection is sent again when the phone is back online. It waits in memory only, so it is lost if the app is closed. |
 | Too many checks | error screen | HTTP 429 gets its own "wait a minute" message. |

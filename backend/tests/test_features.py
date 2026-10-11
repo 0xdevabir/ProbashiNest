@@ -211,3 +211,68 @@ def test_guide_stub_invents_nothing_and_bad_codes_are_refused(client, make_clien
     assert client.get("/api/guide/saudi").json()["detail"]["code"] == "INVALID_REQUEST"
     down = make_client(guide=_boom).get("/api/guide/SA")
     assert down.status_code == 503 and down.json()["detail"]["code"] == "GUIDE_UNAVAILABLE"
+
+
+# --- evaluation -------------------------------------------------------------------
+
+def test_eval_reports_the_false_green_count_of_the_real_engine(make_client):
+    from backend.quality import evaluation
+
+    page = make_client(evaluation=evaluation).get("/api/eval").json()
+    assert page["total"] > 0 and page["real"] + page["synthetic"] == page["total"]
+    assert page["fraud_green"] == 0 and page["fraud_total"] > 0
+    assert len(page["misses"]) == page["total"] - page["correct"]
+    assert set(page["misses"][0]) == {"id", "expected", "got", "is_fraud"} if page["misses"] else True
+    assert "results" not in page  # case ids only, never the offers themselves
+
+
+def test_eval_is_refused_for_a_stubbed_engine_and_when_it_fails(make_client, client):
+    def broken():
+        raise RuntimeError("no cases")
+
+    for app in (client, make_client(evaluation=broken)):
+        refused = app.get("/api/eval")
+        assert refused.status_code == 503 and refused.json()["detail"]["code"] == "EVAL_UNAVAILABLE"
+
+
+# --- review queue -----------------------------------------------------------------
+
+TOKEN = "synthetic-review-token-0123456789"
+
+
+def test_review_queue_needs_the_token_and_groups_repeated_agencies(make_client, tmp_path):
+    path = tmp_path / "reports.jsonl"
+    client = make_client(_settings(reports_path=str(path), admin_token=TOKEN))
+    assert client.get("/api/admin/reports").status_code == 401
+    wrong = client.get("/api/admin/reports", headers={"Authorization": "Bearer nope"})
+    assert wrong.status_code == 401 and wrong.json()["detail"]["code"] == "UNAUTHORIZED"
+
+    auth = {"Authorization": f"Bearer {TOKEN}"}
+    assert client.get("/api/admin/reports", headers=auth).json() == {"total": 0, "agencies": [], "reports": []}
+
+    for body in (REPORT, {**REPORT, "agency_name": "SYNTHETIC other spelling", "agency_license_no": "rl-9001"},
+                 {"consent": True, "level": "amber"}):
+        assert client.post("/api/report", json=body).status_code == 201
+    with path.open("a", encoding="utf-8") as fh:
+        fh.write("not json\n")
+    queue = client.get("/api/admin/reports", headers=auth).json()
+    assert queue["total"] == 3 and len(queue["reports"]) == 3 and queue["reports"][0]["level"] == "amber"
+    (agency,) = queue["agencies"]
+    assert agency["count"] == 2 and agency["agency_license_no"] == "RL-9001" and len(agency["last_date"]) == 10
+
+
+def test_review_queue_is_hidden_until_configured_and_limits_guessing(make_client, client, tmp_path):
+    auth = {"Authorization": f"Bearer {TOKEN}"}
+    assert client.get("/api/admin/reports", headers=auth).status_code == 404
+    assert make_client(_settings(admin_token=TOKEN)).get("/api/admin/reports", headers=auth).status_code == 404
+    limited = make_client(_settings(reports_path=str(tmp_path / "r.jsonl"), admin_token=TOKEN, rate_limit_per_minute=2))
+    codes = [limited.get("/api/admin/reports").status_code for _ in range(3)]
+    assert codes == [401, 401, 429]
+
+
+def test_a_short_admin_token_is_refused_at_startup(monkeypatch):
+    from backend.config import get_settings
+
+    monkeypatch.setenv("ADMIN_TOKEN", "short")
+    with pytest.raises(ValueError, match="ADMIN_TOKEN"):
+        get_settings()

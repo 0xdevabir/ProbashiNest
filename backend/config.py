@@ -28,6 +28,9 @@ def _parse_stubs(value: str) -> frozenset[str]:
     return names
 
 
+MIN_ADMIN_TOKEN_LENGTH = 24
+
+
 @dataclass(frozen=True)
 class Settings:
     stubs: frozenset[str] = frozenset()
@@ -40,6 +43,8 @@ class Settings:
     trust_proxy: bool = False
     # File that consented scam reports are appended to. Empty = reporting is off.
     reports_path: str = ""
+    # Token a human reviewer sends to read the stored reports. Empty = the review endpoint is off.
+    admin_token: str = ""
     telegram_bot_token: str = ""
     telegram_webhook_secret: str = ""
     whatsapp_token: str = ""
@@ -55,10 +60,14 @@ def _flag(name: str) -> bool:
 
 def get_settings() -> Settings:
     origins = os.getenv("CORS_ORIGINS", "http://localhost:5173")
+    admin_token = os.getenv("ADMIN_TOKEN", "").strip()
+    if admin_token and len(admin_token) < MIN_ADMIN_TOKEN_LENGTH:
+        raise ValueError(f"ADMIN_TOKEN must be at least {MIN_ADMIN_TOKEN_LENGTH} characters, or empty to turn review off")
     return Settings(
         rate_limit_per_minute=max(0, int(os.getenv("RATE_LIMIT_PER_MINUTE", "20"))),
         trust_proxy=_flag("TRUST_PROXY"),
         reports_path=os.getenv("REPORTS_PATH", "").strip(),
+        admin_token=admin_token,
         telegram_bot_token=os.getenv("TELEGRAM_BOT_TOKEN", "").strip(),
         telegram_webhook_secret=os.getenv("TELEGRAM_WEBHOOK_SECRET", "").strip(),
         whatsapp_token=os.getenv("WHATSAPP_TOKEN", "").strip(),

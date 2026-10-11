@@ -121,6 +121,8 @@ The response is `CheckResult` (`backend/models.py`): `CheckResponse` plus an opt
 | `GET /api/guide/{country}` | Rights, pre-departure checklist, payment advice and helplines for a two-letter country code. |
 | `GET /api/stats` | Counts since the process started: checks, by level, by channel, by destination, top reason codes, reports. Counts only. In memory, per worker, reset on restart. |
 | `POST /api/report` | JSON scam report the user agreed to send (`ReportIn`). Stored as one JSON line in `REPORTS_PATH`. |
+| `GET /api/eval` | The engine's score on `data/test_cases/`: cases, correct answers, and `fraud_green` (fraud cases called safe, target 0), with the ids of the misses. Run once per process. 503 `EVAL_UNAVAILABLE` when the engine is a stub. |
+| `GET /api/admin/reports` | For review staff: the newest 200 reports and the agencies named more than once (grouped by licence number, else by name). Needs `Authorization: Bearer <ADMIN_TOKEN>`. |
 | `POST /api/bots/telegram` | Telegram webhook. Text, photo, document or voice message → verdict as text plus an mp3. Private chats only. |
 | `GET`, `POST /api/bots/whatsapp` | WhatsApp Cloud API webhook: verification handshake, then text, image, document or audio → verdict. |
 
@@ -132,7 +134,11 @@ New error codes: `RATE_LIMITED` (429, with `Retry-After`), `TOO_MANY_IMAGES` (42
 
 ### Reports
 
-A report holds: the day, the level, reason codes, destination country, agency name and licence number. It holds no document text, no transcript, no IP address and no time of day. Digit runs in the agency fields are masked like in the logs. A report without `consent: true` is refused, and so is any unknown field. Reporting is off (503) until `REPORTS_PATH` is set. The file is the inbox for a human reviewer; there is no review screen yet.
+A report holds: the day, the level, reason codes, destination country, agency name and licence number. It holds no document text, no transcript, no IP address and no time of day. Digit runs in the agency fields are masked like in the logs. A report without `consent: true` is refused, and so is any unknown field. Reporting is off (503) until `REPORTS_PATH` is set. The file is the inbox for a human reviewer, who reads it through `GET /api/admin/reports` (below).
+
+### Review queue
+
+`GET /api/admin/reports` answers 404 until both `ADMIN_TOKEN` and `REPORTS_PATH` are set, 401 `UNAUTHORIZED` without the right token, and is rate limited per client like `/api/check` to slow down guessing. The server refuses to start with a token shorter than 24 characters. There is one shared token and no reviewer accounts, and a reviewer cannot yet mark a report as handled. Several reports about one agency are still claims, not proof.
 
 ### Chat channels
 
@@ -147,4 +153,4 @@ Files from chats are fetched into memory, checked and dropped. Tokens never appe
 
 ### New settings
 
-`RATE_LIMIT_PER_MINUTE`, `TRUST_PROXY`, `REPORTS_PATH`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_WEBHOOK_SECRET`, `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_ID`, `WHATSAPP_VERIFY_TOKEN`, `WHATSAPP_APP_SECRET`, `WHATSAPP_GRAPH_VERSION`. See `.env.example`.
+`RATE_LIMIT_PER_MINUTE`, `TRUST_PROXY`, `REPORTS_PATH`, `ADMIN_TOKEN`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_WEBHOOK_SECRET`, `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_ID`, `WHATSAPP_VERIFY_TOKEN`, `WHATSAPP_APP_SECRET`, `WHATSAPP_GRAPH_VERSION`. See `.env.example`.

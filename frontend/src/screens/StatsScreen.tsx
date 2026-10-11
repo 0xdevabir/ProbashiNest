@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { fetchStats } from '../api'
+import { fetchEvaluation, fetchStats } from '../api'
 import { ScreenHeader } from '../components/ScreenHeader'
 import { useI18n } from '../i18n'
-import { LEVELS, type Stats } from '../types'
+import { LEVELS, type Evaluation, type Stats } from '../types'
 
 const heading = 'mb-3 text-2xl font-bold'
 
@@ -11,10 +11,13 @@ export default function StatsScreen({ onBack }: { onBack: () => void }) {
   const { t, lang, num } = useI18n()
   const [stats, setStats] = useState<Stats | null>(null)
   const [failed, setFailed] = useState(false)
+  // null = not loaded yet, false = this server has none (for example a stubbed engine).
+  const [quality, setQuality] = useState<Evaluation | false | null>(null)
 
   useEffect(() => {
     const abort = new AbortController()
     fetchStats(abort.signal).then(setStats, () => !abort.signal.aborted && setFailed(true))
+    fetchEvaluation(abort.signal).then(setQuality, () => !abort.signal.aborted && setQuality(false))
     return () => abort.abort()
   }, [])
 
@@ -33,6 +36,42 @@ export default function StatsScreen({ onBack }: { onBack: () => void }) {
         <p role="alert" className="rounded-2xl border-2 border-stop bg-stop-tint p-3 text-lg font-semibold">
           {t.stats.failed}
         </p>
+      )}
+      {quality !== null && (
+        <section>
+          <h2 className={heading}>{t.stats.quality}</h2>
+          {quality === false ? (
+            <p className="text-lg text-muted">{t.stats.qualityFailed}</p>
+          ) : (
+            <>
+              <p className="mb-2 text-muted">{t.stats.qualityIntro}</p>
+              <dl className="flex flex-col gap-2">
+                <div className={`rounded-2xl p-3 ${quality.fraud_green === 0 ? 'bg-go-tint' : 'border-2 border-stop bg-stop-tint'}`}>
+                  <dt className="font-semibold">{t.stats.fraudGreen}</dt>
+                  <dd className="text-3xl font-bold tabular-nums">
+                    {num(quality.fraud_green)} / {num(quality.fraud_total)}
+                  </dd>
+                </div>
+                <div className="rounded-2xl bg-white p-3">
+                  <dt className="text-muted">{t.stats.fraudRed}</dt>
+                  <dd className="text-2xl font-bold tabular-nums">
+                    {num(quality.fraud_red)} / {num(quality.fraud_total)}
+                  </dd>
+                </div>
+                <div className="rounded-2xl bg-white p-3">
+                  <dt className="text-muted">{t.stats.correct}</dt>
+                  <dd className="text-2xl font-bold tabular-nums">
+                    {num(quality.correct)} / {num(quality.total)}
+                  </dd>
+                </div>
+              </dl>
+              <p className="mt-2 text-sm text-muted">
+                {t.stats.cases}: {num(quality.real)} {t.stats.realCases}, {num(quality.synthetic)} {t.stats.syntheticCases}.{' '}
+                {t.stats.asOf}: {quality.as_of}
+              </p>
+            </>
+          )}
+        </section>
       )}
       {stats && (
         <>

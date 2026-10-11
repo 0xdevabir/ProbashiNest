@@ -201,6 +201,7 @@ The frontend is Agent 5's. It is a static Vite build, so it does not need a cont
 | `RATE_LIMIT_PER_MINUTE` | environment | Default `20`. Counted per process; add a shared limit at the load balancer if you run more than one task. |
 | `TRUST_PROXY` | environment | Set `true` behind the service's own load balancer, so the limit is per visitor and not per proxy. |
 | `REPORTS_PATH` | environment | File for consented scam reports. A container's disk is lost on redeploy: mount durable storage, or leave it empty to keep reporting off. |
+| `ADMIN_TOKEN` | **secret** | Lets review staff read the stored reports. 24 characters or more (`openssl rand -hex 24`). Empty keeps the review endpoint off. |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_WEBHOOK_SECRET` | **secret** | Then point the bot's webhook at `https://<api>/api/bots/telegram`. |
 | `WHATSAPP_TOKEN`, `WHATSAPP_APP_SECRET`, `WHATSAPP_VERIFY_TOKEN` | **secret** | Callback URL in the Meta app: `https://<api>/api/bots/whatsapp`. |
 | `WHATSAPP_PHONE_ID` | environment | The sending phone number ID from the Meta app. |
